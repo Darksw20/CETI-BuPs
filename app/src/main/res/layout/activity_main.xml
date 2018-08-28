@@ -4,42 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ricardo.eeas.MainActivity">
+    tools:context="com.example.ricardo.eeas.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageView
         android:id="@+id/iLogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="14dp" />
+
     <TextView
         android:id="@+id/tUser"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/Pass"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="245dp" />
+
     <EditText
         android:id="@+id/eUser"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="189dp"
+        android:layout_height="1dp"
+        android:hint="@string/cumEjem"
+        android:inputType="textCapCharacters" />
+
     <ImageView
         android:id="@+id/iUser"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="65dp"
+        android:layout_height="63dp"
+        android:src="@mipmap/ic_launcher_round"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="292dp" />
+
     <TextView
         android:id="@+id/tPass"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Cum"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="132dp" />
+
     <EditText
         android:id="@+id/ePass"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="309dp" />
+
     <ImageView
         android:id="@+id/iPass"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:src="@mipmap/ic_launcher" />
+
     <Button
         android:id="@+id/bSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/log"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="414dp" />
 
 
 </android.support.constraint.ConstraintLayout>
