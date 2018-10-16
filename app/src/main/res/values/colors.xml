@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#00bcd4</color>
+    <color name="colorPrimaryDark">#0097a7</color>
+    <color name="colorAccent">#006064</color>
+    <color name="toolbarIconColor">#0097a7</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#006064</color>
+    <color name="dashExPrimaryColor">#FFC107</color>
+    <color name="dashExPrimaryColorDark">#FFA000</color>
+    <color name="dashExBackColor">#FCFCFC</color>
+    <color name="lightGrayLine">#EDEDED</color>
+    <color name="deepPurple">#7C4DFF</color>
+    <color name="materialYellow">#FFB300</color>
+    <color name="materialGreen">#00BFA5</color>
+    <color name="pinkAccent">#FF4081</color>
 </resources>
