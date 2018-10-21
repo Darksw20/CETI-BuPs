@@ -1,7 +1,9 @@
 package com.dk.ricardo.eeas2.Entidades;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;

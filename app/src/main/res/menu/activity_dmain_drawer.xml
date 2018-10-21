@@ -5,22 +5,55 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/itDbaDash"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="@string/Dash"
+            />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/itDbaContacts"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Contacts"
+            />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-
+            android:id="@+id/itDbaControl"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/CP"
+            />
+        <item
+            android:id="@+id/itDbaQR"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/QR"
+            />
+        <item
+            android:id="@+id/itDbaLocalization"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Localization"
+            />
+        <item
+            android:id="@+id/itDbaMaps"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Maps"
+            />
+        <item
+            android:id="@+id/itDbaTool"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Tool"
+            />
+        <item
+            android:id="@+id/itDbaGeo"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Geo"
+            />
+        <item
+            android:id="@+id/itDbaEmergency"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Emergency"
+            />
+        <item
+            android:id="@+id/itDbaComunication"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/Communication"
+            />
     </group>
 
     <item android:title="Communicate">
@@ -28,7 +61,7 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="nanai" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

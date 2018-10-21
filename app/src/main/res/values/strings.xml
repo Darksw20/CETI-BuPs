@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">B-upS</string>
-    <string name="ip_webServices">http://192.168.1.103:1234/BuPs/webServices/</string>
+    <string name="ip_webServices">http://192.168.0.104:1234/BuPs/webServices/</string>
 
     <string name="Dash">Dashboard</string>
     <string name="Contacts">Contacts</string>
@@ -23,7 +23,7 @@
     <string name="eeas_button_register">Register</string>
     <string name="eeas_error_password">Password must contain at least 8 characters.</string>
     <string name="eeas_error_internet">Please check your internet connection</string>
-    <string name="eeas_error_user">The username didnt exist</string>
+    <string name="eeas_error_user">The username didn´t exist</string>
     <string name="eeas_filter_title">Filter</string>
     <string name="eeas_search_title">Search</string>
     <string name="eeas_product_title">Title</string>

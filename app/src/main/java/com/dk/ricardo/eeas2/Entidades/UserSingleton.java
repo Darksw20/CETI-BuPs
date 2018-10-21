@@ -1,37 +1,73 @@
 package com.dk.ricardo.eeas2.Entidades;
 
-public class User
+public class UserSingleton
 {
-    private String cum;
-    private String nombre;
-    private String aPat;
-    private String aMat;
-    private int sexo;
-    private String fNaci;
-    private String vigencia;
-    private String provincia;
-    private String grupoS;
-    private String seccion;
-    private String scouterResp;
-    private String telCel;
-    private String pass;
-    private double estatura;
-    private double peso;
-    private String colorCabello;
-    private String colorOjos;
-    private String colorPiel;
-    private String tipoSangre;
-    private int donarSangre;
-    private String dieta;
-    private int alcohol;
-    private int fumador;
-    private int usoSustancias;
-    private int famDiabetes;
-    private int famHipertension;
-    private int afeccionFrioCalor;
-    private int infoEmergencia;
-    private String regnal;
-    private int tipoUser;
+    private String cum, nombre, aPat, aMat, fNaci, vigencia, provincia, grupoS, seccion, scouterResp, telCel, pass;
+    private String colorCabello, colorOjos, colorPiel, tipoSangre, dieta, regnal;
+    private int sexo, donarSangre, alcohol, fumador, usoSustancias, famDiabetes, famHipertension, afeccionFrioCalor;
+    private int infoEmergencia, tipoUser;
+    private double estatura, peso;
+
+    private static volatile UserSingleton ourInstance = null;
+
+    private UserSingleton()
+    {
+        //TODO:llenar los datos despues el login
+        /*
+        //array[30];
+
+        //Peticion a volley que me regresa en un array los datos pedidos
+
+        Array [][]array= new Array();
+        setCum(array[0]);
+        setNombre(array[1]);
+        setaPat(array[2]);
+        setaMat(array[3]);
+        setSexo(array[4]);
+        setfNaci(array[5]);
+        setVigencia(array[6]);
+        setProvincia(array[7]);
+        setGrupoS(array[8]);
+        setSeccion(array[9]);
+        setScouterResp(array[10]);
+        setTelCel(array[11]);
+        setPass(array[12]);
+        setEstatura(array[13]);
+        setPeso(array[14]);
+        setColorCabello(array[15]);
+        setColorOjos(array[16]);
+        setColorPiel(array[17]);
+        setTipoSangre(array[18]);
+        setDonarSangre(array[19]);
+        setDieta(array[20]);
+        setAlcohol(array[21]);
+        setFumador(array[22]);
+        setUsoSustancias(array[23]);
+        setFamDiabetes(array[24]);
+        setFamHipertension(array[25]);
+        setAfeccionFrioCalor(array[26]);
+        setInfoEmergencia(array[27]);
+        setRegnal(array[28]);
+        setTipoUser(array[29]);
+         */
+
+    }
+
+    public static UserSingleton getInstance()
+    {
+        if(ourInstance==null)
+        {
+            synchronized (UserSingleton.class)
+            {
+                if(ourInstance==null)
+                {
+                    ourInstance = new UserSingleton();
+                }
+            }
+        }
+        return ourInstance;
+    }
+
 
     public String getCum() {
         return cum;

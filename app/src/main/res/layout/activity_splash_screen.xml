@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.splashScreen">
-
-    <ImageView
-        android:id="@+id/splash"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splashescali" />
+        android:id="@+id/containerLogin">
+        <ImageView
+            android:id="@+id/splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splashescali" />
+    </FrameLayout>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.dk.ricardo.eeas2.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
@@ -17,21 +19,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.dk.ricardo.eeas2.Entidades.CustomJsonArrayRequest;
 import com.dk.ricardo.eeas2.Entidades.VolleySingletonAdapter;
 import com.dk.ricardo.eeas2.R;
-import com.google.gson.JsonArray;
+import com.dk.ricardo.eeas2.activities.MainActivity;
+import com.dk.ricardo.eeas2.activities.splashScreen;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,18 +36,13 @@ import java.util.Map;
  */
 public class LoginFragment extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener
 {
-    private Boolean validado;
-    private int tipo=0;
+    private boolean validado,tipoOf;
+    private int tipo;
     ProgressDialog progreso;
 
-    //RequestQueue request;
-    JsonObjectRequest jsonArrayRequest;
-
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         final TextInputLayout passwordTextInput = view.findViewById(R.id.passTextInput);
         final TextInputLayout userTextInput = view.findViewById(R.id.userTextInput);
@@ -65,153 +56,81 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
 
 
-
         //TODO: Revisar que los errores coincidan con lo que se escribio en la propuesta DER
         loginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view) {
-
-                cargarWebService("userNameAvailable.php");
-                //VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(jsonObjectRequest);
-           /*
-
-                if (!isPasswordValid(passwordEditText.getText()))
+            public void onClick(View view)
+            {
+                if(isUserValid(userEditText.getText())||isPasswordValid(passwordEditText.getText()))
                 {
-                    passwordTextInput.setError(getString(R.string.eeas_error_password));
+                    userTextInput.setError(getString(R.string.eeas_error_user));
                 }
                 else
                 {
+                    userTextInput.setError(null);//limpiar ambos errores
+                    passwordTextInput.setError(null); // Clear the error
+                    cargarWebServiceAuth("loginValidation.php",userEditText.getText().toString(),passwordEditText.getText().toString());
+                    Toast.makeText(getContext(),""+tipo,Toast.LENGTH_SHORT).show();
+                    if(tipo!=404&&tipo!=0)
+                    {
 
 
-                    //Aqui se agrega la forma de verdaderamente iniciar sesion
 
-
-                    final String user=userEditText.getText().toString();
-                    final String pass=passwordEditText.getText().toString();
-
-                    //RequestQueue Objeto=Volley.newRequestQueue(getActivity().getBaseContext());
-                    //TODO: Hacer loginValidation.php
-
-                    String ip=getString(R.string.ip_webServices);
-                    final String Direccion = ip+"loginValidation.php";
-
-                    StringRequest Busca = new StringRequest(Request.Method.POST, Direccion, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONArray jsonArray = new JSONArray(response);
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject obj = jsonArray.getJSONObject(i);
-                                    tipo = obj.getInt("tipo");
-                                }
-
-                                switch(tipo)
-                                {
-                                    //Error
-                                    case 0:
-                                        if(!isUserValid(userEditText.getText()))
-                                        {
-                                            userTextInput.setError(getString((R.string.eeas_error_user)));
-                                        }
-                                        break;
-                                    //DBA
-                                    case 1:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Organizadores
-                                    case 2:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Servicios medicos
-                                    case 3:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Jueces
-                                    case 4:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Talleristas
-                                    case 5:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Participantes
-                                    case 6:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Scouter responsable
-                                    case 7:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Staff
-                                    case 8:
-                                        userTextInput.setError(null);//limpiar ambos errores
-                                        passwordTextInput.setError(null); // Clear the error
-                                        break;
-                                    //Error de conexion(o desconocido)
-                                    default:
-                                        break;
-
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                Intent intent=new Intent(getActivity(),MainActivity.class);
+                                startActivity(intent);
+                                //finish();
                             }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity().getBaseContext(),"ERROR",Toast.LENGTH_LONG).show();
-                        }
+                        },2000);
+                    }
+                    else
+                    {
+                        //error de tipo de usuario
+                    }
+                }
 
-                }){
-                        @Override
-                        protected Map<String, String> getParams()
+                // Clear the error once more than 8 characters are typed.
+                passwordEditText.setOnKeyListener(new View.OnKeyListener()
+                {
+                    @Override
+                    public boolean onKey(View view, int i, KeyEvent keyEvent)
+                    {
+                        if (!isPasswordValid(passwordEditText.getText()))
                         {
-                            Map<String, String> params= new HashMap<String, String>();
-                            params.put("CUM",user);
-                            params.put("Pass",pass);
-                            return params;
+                            passwordTextInput.setError(null); //Clear the error
                         }
-                    };
-                    //Objeto.add(Busca);
-                    VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(Busca);
-                    //TODO:Que hacer con el valor de retorno tipo?
-                }
-            }
-        });
-
-
-
-
-
-
-        // Clear the error once more than 8 characters are typed.
-        passwordEditText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (isPasswordValid(passwordEditText.getText())) {
-                    passwordTextInput.setError(null); //Clear the error
-                }
-                return false;
-            }
-        });
-
-
-        */
+                        return false;
+                    }
+                });
             }
         });
         return view;
     }
 
+    /**
+     * Este metodo sirve para saber si el usuario ingresado si existe dentro de la base de datos
+     * @param text
+     * Es el texto que recibe de userEditText
+     * @return
+     * Regresa un valor booleano que muestra si existe o no el Usuario en la base de datos
+     */
+    //TODO: Hacer el php para esta funcion: userNameAvailable.php
+    private boolean isUserValid(@NonNull Editable text)
+    {
+        try {
+            cargarWebServiceUV("userNameAvailable.php",text.toString());//,text.toString());
+        }catch (Exception e)
+        {
+            Log.e("Error Raro","no carga esta madre");
+            validado=false;
+        }
 
-
+        return validado;
+    }
 
     /**
      * Es un metodo para saber si la contraseña tiene las caracteristicas minimas necesarias
@@ -226,119 +145,61 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
      */
     //TODO: Agregar condiciones 2 y 3
     private boolean isPasswordValid(@Nullable Editable text) {
-        return text != null && text.length() >= 8;
-    }
-
-    /**
-     * Este metodo sirve para saber si el usuario ingresado si existe dentro de la base de datos
-     * @param text
-     * Es el texto que recibe de userEditText
-     * @return
-     * Regresa un valor booleano que muestra si existe o no el Usuario en la base de datos
-     */
-    //TODO: Hacer el php para esta funcion: userNameAvailable.php
-    private boolean isUserValid(@NonNull Editable text)
-    {
-        cargarWebService("userNameAvailable.php");//,text.toString());
-        /*
-        final String user = text.toString();
-        RequestQueue Objeto = Volley.newRequestQueue(getActivity().getBaseContext());
-
-        String ip = getString(R.string.ip_webServices);
-
-        final String Direccion = ip+"userNameAvailable.php";
-        //Toast.makeText(getActivity().getBaseContext(),"Usuario de nombre"+user+";"+Direccion,Toast.LENGTH_SHORT).show();
-
-        StringRequest Busca = new StringRequest(Request.Method.POST, Direccion, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-
-                    for (int i = 0; i < jsonArray.length(); i++) {         //obtengo los valores del response de volley
-                        JSONObject obj = jsonArray.getJSONObject(i);  //convierto de json a string separadas
-                        validado = obj.getBoolean("validado");
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }},new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity().getBaseContext(),"ERROR",Toast.LENGTH_LONG).show();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String> params= new HashMap<String, String>();
-                params.put("CUM",user);
-                return params;
-            }
-        };
-        Objeto.add(Busca);
-        Toast.makeText(getActivity().getBaseContext(),""+validado,Toast.LENGTH_SHORT).show();
-
-        */
-        return validado;
+        return !(text != null && text.length() >= 8);
     }
 
 
 
-
-
-
-
-
-
-
-
-
-    private void cargarWebService(String webService)//,final String user)
+    private void cargarWebServiceUV(String webService,final String user)
     {
+        tipoOf=false;
         progreso=new ProgressDialog(getContext());
-        progreso.setMessage("Revisando solicitud...");
+        progreso.setMessage("Revisando solicitud...uv");
         progreso.show();
 
         String ip= getString(R.string.ip_webServices), url=""+ip+webService;
-        Toast.makeText(getContext(),url,Toast.LENGTH_SHORT).show();
-        JSONArray jsonArray = new JSONArray();
-        JSONObject jsonParams = new JSONObject();
-        try
-        {
-            jsonParams.put("CUM","JAL0720230");
-            jsonParams.put("Pass","hola");
-        }catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        jsonArray.put(jsonParams);
-        Log.d("Gabo",jsonParams.toString());
 
-        jsonArrayRequest=new JsonObjectRequest(Request.Method.POST,""+url,null,this,this)
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
         {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("CUM","JAL0720230");
-                params.put("Pass","hola");
-
+                params.put("CUM",user);
                 return params;
             }
         };
+        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
+    }
 
-        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(jsonArrayRequest);
+    //Agregar en ves de dos parametros un array
 
+    private void cargarWebServiceAuth(String webService,final String user,final String password)
+    {
+        tipoOf=true;
+        progreso=new ProgressDialog(getContext());
+        progreso.setMessage("Revisando solicitud...auth");
+        progreso.show();
+
+        String ip= getString(R.string.ip_webServices), url=""+ip+webService;
+
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
+        {
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("CUM",user);
+                params.put("Pass",password);
+                return params;
+            }
+        };
+        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
     }
 
 
     @Override
     public void onErrorResponse(VolleyError error) {
         progreso.hide();
-        Toast.makeText(getContext(),"No se pudo consultar "+error.toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(),"No se pudo consultar "+error.toString(),Toast.LENGTH_LONG).show();
         Log.i("ERROR",error.toString());
 
     }
@@ -348,6 +209,27 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     @Override
     public void onResponse(JSONObject response) {
         progreso.hide();
-        Toast.makeText(getContext(),"Mensaje: "+response,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(),"Mensaje: "+response,Toast.LENGTH_LONG).show();
+        if(tipoOf)
+        {
+            try
+            {
+                validado=response.getBoolean("validado");
+            }catch (Exception e)
+            {
+                Log.e("ErrorParse",""+e);
+            }
+        }
+        else
+        {
+            try
+            {
+                tipo=response.getInt("tipo");
+            }catch (Exception a)
+            {
+                Log.e("errorNose",""+a);
+            }
+        }
     }
 }
+
