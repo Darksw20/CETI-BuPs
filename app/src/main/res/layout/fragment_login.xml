@@ -77,6 +77,7 @@
                 android:text="@string/eeas_button_Login"
                 android:textSize="25sp"
                 android:padding="10dp"
+                android:onClick="login"
                 android:textAppearance="@style/Widget.MaterialComponents.Button" />
 
             <android.support.design.button.MaterialButton

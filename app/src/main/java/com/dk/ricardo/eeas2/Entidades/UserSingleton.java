@@ -1,56 +1,51 @@
 package com.dk.ricardo.eeas2.Entidades;
 
-public class UserSingleton
+import android.content.Context;
+import android.content.res.Resources;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.dk.ricardo.eeas2.R;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class UserSingleton implements Response.Listener<JSONObject>,Response.ErrorListener
 {
     private String cum, nombre, aPat, aMat, fNaci, vigencia, provincia, grupoS, seccion, scouterResp, telCel, pass;
     private String colorCabello, colorOjos, colorPiel, tipoSangre, dieta, regnal;
     private int sexo, donarSangre, alcohol, fumador, usoSustancias, famDiabetes, famHipertension, afeccionFrioCalor;
     private int infoEmergencia, tipoUser;
     private double estatura, peso;
+    private Context context;
 
     private static volatile UserSingleton ourInstance = null;
 
-    private UserSingleton()
+    private UserSingleton(Context context)
     {
-        //TODO:llenar los datos despues el login
-        /*
-        //array[30];
 
-        //Peticion a volley que me regresa en un array los datos pedidos
+        this.context=context;
+        cargarWebService(context);
 
-        Array [][]array= new Array();
-        setCum(array[0]);
-        setNombre(array[1]);
-        setaPat(array[2]);
-        setaMat(array[3]);
-        setSexo(array[4]);
-        setfNaci(array[5]);
-        setVigencia(array[6]);
-        setProvincia(array[7]);
-        setGrupoS(array[8]);
-        setSeccion(array[9]);
-        setScouterResp(array[10]);
-        setTelCel(array[11]);
-        setPass(array[12]);
-        setEstatura(array[13]);
-        setPeso(array[14]);
-        setColorCabello(array[15]);
-        setColorOjos(array[16]);
-        setColorPiel(array[17]);
-        setTipoSangre(array[18]);
-        setDonarSangre(array[19]);
-        setDieta(array[20]);
-        setAlcohol(array[21]);
-        setFumador(array[22]);
-        setUsoSustancias(array[23]);
-        setFamDiabetes(array[24]);
-        setFamHipertension(array[25]);
-        setAfeccionFrioCalor(array[26]);
-        setInfoEmergencia(array[27]);
-        setRegnal(array[28]);
-        setTipoUser(array[29]);
-         */
+    }
 
+    private void cargarWebService(Context context)
+    {
+        String webService="fillUserData.php";
+        String ip= Resources.getSystem().getString(R.string.ip_webServices),url=""+ip+webService;
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
+        {
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<>();
+                params.put("CUM",getCum());
+                params.put("pass",getPass());
+                return params;
+            }
+        };
+        VolleySingletonAdapter.getInstanceVolley(context).addToRequestQueue(customjsonArrayRequest);
     }
 
     public static UserSingleton getInstance()
@@ -61,7 +56,8 @@ public class UserSingleton
             {
                 if(ourInstance==null)
                 {
-                    ourInstance = new UserSingleton();
+
+                    ourInstance = new UserSingleton(ourInstance.context);
                 }
             }
         }
@@ -307,5 +303,54 @@ public class UserSingleton
 
     public void setTipoUser(int tipoUser) {
         this.tipoUser = tipoUser;
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        error.printStackTrace();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+
+        try
+        {
+            setCum(response.getString("CUM"));
+            setNombre(response.getString("nombre"));
+            setaPat(response.getString("aPat"));
+            setaMat(response.getString("aMat"));
+            setSexo(response.getInt("sexo"));
+            setfNaci(response.getString("fNaci"));
+            setVigencia(response.getString("vigencia"));
+            setProvincia(response.getString("provincia"));
+            setGrupoS(response.getString("grupoS"));
+            setSeccion(response.getString("seccion"));
+            setScouterResp(response.getString("scouterResp"));
+            setTelCel(response.getString("telCel"));
+            setPass(response.getString("pass"));
+            setEstatura(response.getDouble("estatura"));
+            setPeso(response.getDouble("peso"));
+            setColorCabello(response.getString("colorCabello"));
+            setColorOjos(response.getString("colorOjos"));
+            setColorPiel(response.getString("colorPiel"));
+            setTipoSangre(response.getString("tipoSangre"));
+            setDonarSangre(response.getInt("donarSangre"));
+            setDieta(response.getString("dieta"));
+            setAlcohol(response.getInt("alcohol"));
+            setFumador(response.getInt("fumador"));
+            setUsoSustancias(response.getInt("usoSustancias"));
+            setFamDiabetes(response.getInt("famDiabetes"));
+            setFamHipertension(response.getInt("famHipertension"));
+            setAfeccionFrioCalor(response.getInt("afeccionesFrioCalor"));
+            setInfoEmergencia(response.getInt("infoEmergencia"));
+            setRegnal(response.getString("regnal"));
+            setTipoUser(response.getInt("tipoUser"));
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+
     }
 }

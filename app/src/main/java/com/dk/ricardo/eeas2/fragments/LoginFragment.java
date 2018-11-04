@@ -2,6 +2,7 @@ package com.dk.ricardo.eeas2.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.dk.ricardo.eeas2.Entidades.CustomJsonArrayRequest;
+import com.dk.ricardo.eeas2.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.Entidades.VolleySingletonAdapter;
 import com.dk.ricardo.eeas2.R;
 import com.dk.ricardo.eeas2.activities.MainActivity;
@@ -31,6 +33,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Fragment representing the login screen for B-upS.
  */
@@ -38,23 +42,77 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 {
     private boolean validado,tipoOf;
     private int tipo;
-    ProgressDialog progreso;
+    private String user, pass;
+
+    SharedPreferences loggin;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         final TextInputLayout passwordTextInput = view.findViewById(R.id.passTextInput);
         final TextInputLayout userTextInput = view.findViewById(R.id.userTextInput);
         final TextInputEditText passwordEditText = view.findViewById(R.id.passEditText);
-        final TextInputEditText userEditText= view.findViewById(R.id.userEditText);
+        final TextInputEditText userEditText = view.findViewById(R.id.userEditText);
         MaterialButton loginButton = view.findViewById(R.id.loginButton);
 
 
         //TODO: Agregar shared preferences
+        try
+        {
+            loggin = getContext().getSharedPreferences("LoginData", MODE_PRIVATE);
+
+            tipo=loggin.getInt("type",404);
+            user=loggin.getString("user","404");
+            pass=loggin.getString("pass","404");
+
+            if(tipo!=404||!user.equals("404")||!pass.equals("404"))
+            {
+                UserSingleton.getInstance().setCum(user);
+                UserSingleton.getInstance().setPass(pass);
+                UserSingleton.getInstance().setTipoUser(tipo);
+                //se hace query, si los datos coinciden con alguna cuenta se entra al sistema
+                Intent inicio = new Intent(getActivity(), MainActivity.class);
+                startActivity(inicio);
+            }
+
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
         //TODO: Revisar que los errores coincidan con lo que se escribio en la propuesta DER
         loginButton.setOnClickListener(new View.OnClickListener()
@@ -118,6 +176,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
      * @return
      * Regresa un valor booleano que muestra si existe o no el Usuario en la base de datos
      */
+/*
     //TODO: Hacer el php para esta funcion: userNameAvailable.php
     private boolean isUserValid(@NonNull Editable text)
     {
@@ -143,6 +202,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
      * @return
      * Retorna un valor booleano que dice si es valido o no
      */
+/*
     //TODO: Agregar condiciones 2 y 3
     private boolean isPasswordValid(@Nullable Editable text) {
         return !(text != null && text.length() >= 8);
@@ -196,20 +256,24 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     }
 
 
+
+
+
+
+
+}
+*/
+    return view;
+    }
+
     @Override
     public void onErrorResponse(VolleyError error) {
-        progreso.hide();
-        //Toast.makeText(getContext(),"No se pudo consultar "+error.toString(),Toast.LENGTH_LONG).show();
+
         Log.i("ERROR",error.toString());
 
     }
-
-
-
     @Override
     public void onResponse(JSONObject response) {
-        progreso.hide();
-        //Toast.makeText(getContext(),"Mensaje: "+response,Toast.LENGTH_LONG).show();
         if(tipoOf)
         {
             try
@@ -232,4 +296,3 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         }
     }
 }
-

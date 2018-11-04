@@ -1,6 +1,5 @@
 package com.dk.ricardo.eeas2.activities;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.fragments.DashFragment;
 import com.dk.ricardo.eeas2.fragments.LoginFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 
@@ -33,7 +33,7 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
                 // Do something after 5s = 5000ms
                 if (savedInstanceState == null)
                 {
-
+                    //Usar esta linea para cambiar de fragment en lo que arreglo el show
                     getSupportFragmentManager().beginTransaction().add(R.id.containerLogin, new LoginFragment()).commitAllowingStateLoss();
                     final int uiOptions2=View.SYSTEM_UI_FLAG_VISIBLE;
                     decorView.setSystemUiVisibility(uiOptions2);
@@ -41,19 +41,8 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
                 }
             }
         }, 2000);
-
-       // Intent inicio = new Intent(getApplicationContext(), MainActivity.class);
-       // startActivity(inicio);
-
     }
-/*
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
-        finish();
-    }
-*/
+
     @Override
     public void navigateTo(Fragment fragment, boolean addToBackstack) {
         FragmentTransaction transaction =

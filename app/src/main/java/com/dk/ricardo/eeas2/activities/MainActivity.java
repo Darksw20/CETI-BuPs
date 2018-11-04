@@ -1,5 +1,7 @@
 package com.dk.ricardo.eeas2.activities;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,19 +15,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dk.ricardo.eeas2.DBase.ConexionSQLiteHelper;
 import com.dk.ricardo.eeas2.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
 import com.dk.ricardo.eeas2.fragments.DashFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
+import com.dk.ricardo.eeas2.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,NavigationHost
 {
-    int usuario=3;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        switch (usuario)//UserSingleton.getInstance().getTipoUser())
+        //Con este switch-case sabemos que layout se despliega
+        switch (UserSingleton.getInstance().getTipoUser())
         {
             case 0:
                 setContentView(R.layout.activity_main_dba);
@@ -56,40 +60,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        ConexionSQLiteHelper con;
+        SQLiteDatabase db;
         DrawerLayout drawer;
 
-        switch (usuario)//UserSingleton.getInstance().getTipoUser())
+        switch (UserSingleton.getInstance().getTipoUser())
         {
             case 0:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_dba);
+                drawer = findViewById(R.id.drawer_layout_dba);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
+                db=con.getWritableDatabase();
+                ContentValues values=new ContentValues();
+                values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
+                values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
+                values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
+                values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
+                values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
+
+                Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CUM,values);
+                Toast.makeText(getApplicationContext(),"Id Registro"+idResultante,Toast.LENGTH_SHORT).show();
+
+                db.close();
                 break;
             case 1:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_org);
+                drawer = findViewById(R.id.drawer_layout_org);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 2:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sm);
+                drawer = findViewById(R.id.drawer_layout_sm);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 3:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_juez);
+                drawer = findViewById(R.id.drawer_layout_juez);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 4:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_tallerista);
+                drawer = findViewById(R.id.drawer_layout_tallerista);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 5:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_participante);
+                drawer = findViewById(R.id.drawer_layout_participante);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 6:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sr);
+                drawer = findViewById(R.id.drawer_layout_sr);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 7:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_staff);
+                drawer = findViewById(R.id.drawer_layout_staff);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             default:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_off);
+                drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
         /*
@@ -101,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -124,34 +148,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer;
 
-        switch (usuario)//UserSingleton.getInstance().getTipoUser())
+        switch (UserSingleton.getInstance().getTipoUser())
         {
             case 0:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_dba);
+                drawer = findViewById(R.id.drawer_layout_dba);
                 break;
             case 1:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_org);
+                drawer = findViewById(R.id.drawer_layout_org);
                 break;
             case 2:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sm);
+                drawer = findViewById(R.id.drawer_layout_sm);
                 break;
             case 3:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_juez);
+                drawer = findViewById(R.id.drawer_layout_juez);
                 break;
             case 4:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_tallerista);
+                drawer = findViewById(R.id.drawer_layout_tallerista);
                 break;
             case 5:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_participante);
+                drawer = findViewById(R.id.drawer_layout_participante);
                 break;
             case 6:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sr);
+                drawer = findViewById(R.id.drawer_layout_sr);
                 break;
             case 7:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_staff);
+                drawer = findViewById(R.id.drawer_layout_staff);
                 break;
             default:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_off);
+                drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -229,34 +253,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer;
 
-        switch (usuario)//UserSingleton.getInstance().getTipoUser())
+        switch (UserSingleton.getInstance().getTipoUser())
         {
             case 0:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_dba);
+                drawer = findViewById(R.id.drawer_layout_dba);
                 break;
             case 1:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_org);
+                drawer = findViewById(R.id.drawer_layout_org);
                 break;
             case 2:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sm);
+                drawer = findViewById(R.id.drawer_layout_sm);
                 break;
             case 3:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_juez);
+                drawer = findViewById(R.id.drawer_layout_juez);
                 break;
             case 4:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_tallerista);
+                drawer = findViewById(R.id.drawer_layout_tallerista);
                 break;
             case 5:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_participante);
+                drawer = findViewById(R.id.drawer_layout_participante);
                 break;
             case 6:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_sr);
+                drawer = findViewById(R.id.drawer_layout_sr);
                 break;
             case 7:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_staff);
+                drawer = findViewById(R.id.drawer_layout_staff);
                 break;
             default:
-                drawer = (DrawerLayout) findViewById(R.id.drawer_layout_off);
+                drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
 
@@ -284,6 +308,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void register(View view)
+    {
+
+    }
+
+    public void login(View view)
     {
 
     }
