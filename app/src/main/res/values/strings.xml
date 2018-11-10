@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">B-upS</string>
-    <string name="ip_webServices">http://192.168.0.104:1234/BuPs/webServices/</string>
-
+    <string name="ip_webServices">http://192.168.0.102:1234/BupsWeb/webServices/</string>
     <string name="Dash">Dashboard</string>
     <string name="Contacts">Contacts</string>
     <string name="CP">Control Panel</string>
@@ -28,7 +27,15 @@
     <string name="eeas_search_title">Search</string>
     <string name="eeas_product_title">Title</string>
     <string name="eeas_product_description">Secondary text</string>
-
+    <string name="User1">DBA</string>
+    <string name="User2">Organizador</string>
+    <string name="User3">Servicio Medico</string>
+    <string name="User4">Tallerista</string>
+    <string name="User5">Juez</string>
+    <string name="User6">Participante</string>
+    <string name="User7">Scouter Responsable</string>
+    <string name="User8">Staff</string>
+    <string name="Bienvenida">Bienvenido </string>
 
     <string name="shr_error_password">Password must contain at least 8 characters.</string>
     <string name="shr_filter_title">Filter</string>
@@ -36,17 +43,6 @@
     <string name="shr_product_title">Title</string>
     <string name="shr_product_description">Secondary text</string>
 
-    <!-- Shrine backdrop menu labels -->
-    <string name="shr_featured_label">Featured</string>
-    <string name="shr_apartment_label">Apartment</string>
-    <string name="shr_accessories_label">Accessories</string>
-    <string name="shr_shoes_label">Shoes</string>
-    <string name="shr_tops_label">Tops</string>
-    <string name="shr_bottoms_label">Bottoms</string>
-    <string name="shr_dresses_label">Dresses</string>
-    <string name="shr_account_label">My Account</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_dmain">DMainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

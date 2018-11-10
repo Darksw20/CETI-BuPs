@@ -1,7 +1,9 @@
 package com.dk.ricardo.eeas2.activities;
 
 import android.content.ContentValues;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,90 +12,108 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.DBase.ConexionSQLiteHelper;
-import com.dk.ricardo.eeas2.Entidades.UserSingleton;
+import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.fragments.ComunicationFragment;
+import com.dk.ricardo.eeas2.fragments.ContactsFragment;
+import com.dk.ricardo.eeas2.fragments.ContestGestorFragment;
+import com.dk.ricardo.eeas2.fragments.ControlFragment;
 import com.dk.ricardo.eeas2.fragments.DashFragment;
+import com.dk.ricardo.eeas2.fragments.EmergencyNumbsFragment;
+import com.dk.ricardo.eeas2.fragments.GanttChartFragment;
+import com.dk.ricardo.eeas2.fragments.GeoLocationFragment;
+import com.dk.ricardo.eeas2.fragments.LocalizationFragment;
+import com.dk.ricardo.eeas2.fragments.MapUserLocationFragment;
+import com.dk.ricardo.eeas2.fragments.MedicFileFragment;
+import com.dk.ricardo.eeas2.fragments.OptionsFragment;
+import com.dk.ricardo.eeas2.fragments.QRImageFragment;
+import com.dk.ricardo.eeas2.fragments.SchedFragment;
+import com.dk.ricardo.eeas2.fragments.ToolboxFragment;
+import com.dk.ricardo.eeas2.fragments.WorkShGestorFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 import com.dk.ricardo.eeas2.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,NavigationHost
 {
+    TextView texrName, textCharge;
+    ConexionSQLiteHelper con;
+    SQLiteDatabase db;
+    String string;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        //Con este switch-case sabemos que layout se despliega
+        //TODO: REVISAR QUE HAYA INTERNET CUANDO SE USE EL SINGLETON
+        UserSingleton.getInstance().cargarWebService(this);
+        delay();
         switch (UserSingleton.getInstance().getTipoUser())
         {
-            case 0:
+            case 1:
                 setContentView(R.layout.activity_main_dba);
                 break;
-            case 1:
+            case 2:
                 setContentView(R.layout.activity_main_org);
                 break;
-            case 2:
-                setContentView(R.layout.activity_main_sm);
-                break;
             case 3:
-                setContentView(R.layout.activity_main_juez);
+                setContentView(R.layout.activity_main_sm);
                 break;
             case 4:
                 setContentView(R.layout.activity_main_tallerista);
                 break;
             case 5:
-                setContentView(R.layout.activity_main_participante);
+                setContentView(R.layout.activity_main_juez);
                 break;
             case 6:
-                setContentView(R.layout.activity_main_sr);
+                setContentView(R.layout.activity_main_participante);
                 break;
             case 7:
+                setContentView(R.layout.activity_main_sr);
+                break;
+            case 8:
                 setContentView(R.layout.activity_main_staff);
                 break;
             default:
                 setContentView(R.layout.activity_main_off);
                 break;
         }
-
         android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ConexionSQLiteHelper con;
-        SQLiteDatabase db;
-        DrawerLayout drawer;
 
+        //TODO: Agregar funciones de la base de datos(osea que jale)
+        //Este switch es para crear la base de datos
         switch (UserSingleton.getInstance().getTipoUser())
         {
-            case 0:
+            case 1:
                 drawer = findViewById(R.id.drawer_layout_dba);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 db=con.getWritableDatabase();
                 ContentValues values=new ContentValues();
-                values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
-                values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
-                values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
-                values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
-                values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
-
-                Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CUM,values);
-                Toast.makeText(getApplicationContext(),"Id Registro"+idResultante,Toast.LENGTH_SHORT).show();
-
+                    values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
+                    values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
+                    values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
+                    values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
+                    values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
                 db.close();
+
                 break;
-            case 1:
+            case 2:
                 drawer = findViewById(R.id.drawer_layout_org);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
-            case 2:
-                drawer = findViewById(R.id.drawer_layout_sm);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
-                break;
             case 3:
-                drawer = findViewById(R.id.drawer_layout_juez);
+                drawer = findViewById(R.id.drawer_layout_sm);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 4:
@@ -101,14 +121,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 5:
-                drawer = findViewById(R.id.drawer_layout_participante);
+                drawer = findViewById(R.id.drawer_layout_juez);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 6:
-                drawer = findViewById(R.id.drawer_layout_sr);
+                drawer = findViewById(R.id.drawer_layout_participante);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 7:
+                drawer = findViewById(R.id.drawer_layout_sr);
+                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
+                break;
+            case 8:
                 drawer = findViewById(R.id.drawer_layout_staff);
                 con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
@@ -116,68 +140,84 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
-        /*
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        */
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        navigationView = findViewById(R.id.nav_view);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         /*
         * Este if sirve para poder mantener los datos aun cuando se cambie la vista de lugar
-        *
+        *En realidad te manda al fragment de inicio
         * */
         if (savedInstanceState == null)
         {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.container, new DashFragment())
-                    .commit();
+            switch (UserSingleton.getInstance().getTipoUser())
+            {
+                case 1:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new DashFragment())
+                            .commit();
+
+                    break;
+                case 2:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new DashFragment())
+                            .commit();
+                    break;
+                case 3:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new MedicFileFragment())
+                            .commit();
+                    break;
+                case 4:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new WorkShGestorFragment())
+                            .commit();
+                    break;
+                case 5:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new ContestGestorFragment())
+                            .commit();
+                    break;
+                case 6:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new DashFragment())
+                            .commit();
+                    break;
+                case 7:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new MedicFileFragment())
+                            .commit();
+                    break;
+                case 8:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new DashFragment())
+                            .commit();
+                    break;
+                default:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.container, new GanttChartFragment())
+                            .commit();
+                    break;
+            }
+
         }
     }
     @Override
-    public void onBackPressed() {
-        ///TODO: cambiar el drawer layout segun el tipo de usuario
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        DrawerLayout drawer;
-
-        switch (UserSingleton.getInstance().getTipoUser())
-        {
-            case 0:
-                drawer = findViewById(R.id.drawer_layout_dba);
-                break;
-            case 1:
-                drawer = findViewById(R.id.drawer_layout_org);
-                break;
-            case 2:
-                drawer = findViewById(R.id.drawer_layout_sm);
-                break;
-            case 3:
-                drawer = findViewById(R.id.drawer_layout_juez);
-                break;
-            case 4:
-                drawer = findViewById(R.id.drawer_layout_tallerista);
-                break;
-            case 5:
-                drawer = findViewById(R.id.drawer_layout_participante);
-                break;
-            case 6:
-                drawer = findViewById(R.id.drawer_layout_sr);
-                break;
-            case 7:
-                drawer = findViewById(R.id.drawer_layout_staff);
-                break;
-            default:
-                drawer = findViewById(R.id.drawer_layout_off);
-                break;
-        }
+    public void onBackPressed()
+    {
+        //TODO: Agregar que se revise el estado de internet
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -189,6 +229,64 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dmain, menu);
+        texrName= findViewById(R.id.textName);
+        textCharge= findViewById(R.id.textCharge);
+        if(UserSingleton.getInstance().getNombre()==null)
+        {
+            texrName.setText("No hay internet disponible");
+            textCharge.setText("Cerrar sesion");
+            Log.e("Error de internet",""+UserSingleton.getInstance().getNombre());
+        }
+        else
+        {
+            switch (UserSingleton.getInstance().getTipoUser())
+            {
+                case 1:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User1);
+                    break;
+                case 2:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User2);
+                    break;
+                case 3:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User3);
+                    break;
+                case 4:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User4);
+                    break;
+                case 5:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User5);
+                    break;
+                case 6:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User6);
+                    break;
+                case 7:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User7);
+                    break;
+                case 8:
+                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
+                    texrName.setText(string);
+                    textCharge.setText(R.string.User8);
+                    break;
+                default:
+                    texrName.setText("Cerrar sesion");
+                    textCharge.setText("Por Favor");
+                    break;
+            }
+        }
         return true;
     }
 
@@ -213,76 +311,199 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
 
         int id = item.getItemId();
-
-        switch (id)
-        {
-            case R.id.itDash:
-                Toast.makeText(getApplicationContext(),"Dashboard",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itContacts:
-                Toast.makeText(getApplicationContext(),"Contactos",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itControl:
-                Toast.makeText(getApplicationContext(),"Panel de Control",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itQR:
-                Toast.makeText(getApplicationContext(),"Codigo QR",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itLocalization:
-                Toast.makeText(getApplicationContext(),"Localizacion",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itMaps:
-                Toast.makeText(getApplicationContext(),"Mapas",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itTool:
-                Toast.makeText(getApplicationContext(),"Caja de herramientas",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itGeo:
-                Toast.makeText(getApplicationContext(),"Geolocalizacion",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itEmergency:
-                Toast.makeText(getApplicationContext(),"Numeros de Emergencia",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.itComunication:
-                Toast.makeText(getApplicationContext(),"Comunicacion",Toast.LENGTH_LONG).show();
-                break;
-
-        }
-
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         DrawerLayout drawer;
-
         switch (UserSingleton.getInstance().getTipoUser())
         {
-            case 0:
+            case 1:
                 drawer = findViewById(R.id.drawer_layout_dba);
                 break;
-            case 1:
+            case 2:
                 drawer = findViewById(R.id.drawer_layout_org);
                 break;
-            case 2:
-                drawer = findViewById(R.id.drawer_layout_sm);
-                break;
             case 3:
-                drawer = findViewById(R.id.drawer_layout_juez);
+                drawer = findViewById(R.id.drawer_layout_sm);
                 break;
             case 4:
                 drawer = findViewById(R.id.drawer_layout_tallerista);
                 break;
             case 5:
-                drawer = findViewById(R.id.drawer_layout_participante);
+                drawer = findViewById(R.id.drawer_layout_juez);
                 break;
             case 6:
-                drawer = findViewById(R.id.drawer_layout_sr);
+                drawer = findViewById(R.id.drawer_layout_participante);
                 break;
             case 7:
+                drawer = findViewById(R.id.drawer_layout_sr);
+                break;
+            case 8:
                 drawer = findViewById(R.id.drawer_layout_staff);
                 break;
             default:
                 drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
+        switch (id)
+        {
+            case R.id.itDbaDash:
+                //case R.id.itOrgDash:
+                //case R.id.itSMDash:
+                //case R.id.itTallerDash:
+                //case R.id.itJuezDash:
+            case R.id.itPartDash:
+            case R.id.itSRDash:
+            case R.id.itStaffDash:
+
+                Toast.makeText(getApplicationContext(),"Dashboard",Toast.LENGTH_LONG).show();
+                navigateTo(new DashFragment(),true);
+                break;
+            case R.id.itDbaContacts:
+            case R.id.itOrgContacts:
+            case R.id.itSMContacts:
+            case R.id.itTallerContacts:
+            case R.id.itJuezContacts:
+            case R.id.itPartContacts:
+            case R.id.itSRContacts:
+            case R.id.itStaffContacts:
+
+                Toast.makeText(getApplicationContext(),"Contactos",Toast.LENGTH_LONG).show();
+                navigateTo(new ContactsFragment(),true);
+                break;
+            case R.id.itDbaControl:
+            case R.id.itOrgControl:
+            case R.id.itSMControl:
+            case R.id.itTallerControl:
+            case R.id.itJuezControl:
+                //case R.id.itPartExit:
+                //case R.id.itSRExit:
+            case R.id.itStaffControl:
+
+                Toast.makeText(getApplicationContext(),"Panel de Control",Toast.LENGTH_LONG).show();
+                navigateTo(new ControlFragment(),true);
+                break;
+            case R.id.itDbaQR:
+            case R.id.itOrgQR:
+            case R.id.itSMQR:
+            case R.id.itTallerQR:
+            case R.id.itJuezQR:
+            case R.id.itPartQR:
+            case R.id.itSRQR:
+            case R.id.itStaffQR:
+
+                Toast.makeText(getApplicationContext(),"Codigo QR",Toast.LENGTH_LONG).show();
+                navigateTo(new QRImageFragment(),true);
+                break;
+            case R.id.itDbaLocalization:
+            case R.id.itOrgLocalization:
+            case R.id.itSMLocalization:
+                //case R.id.itTallerLocalization:
+                //case R.id.itJuezLocalization:
+                //case R.id.itPartLocalization:
+                //case R.id.itSRLocalization:
+            case R.id.itStaffLocalization:
+
+                Toast.makeText(getApplicationContext(),"Localizacion",Toast.LENGTH_LONG).show();
+                navigateTo(new LocalizationFragment(),true);
+                break;
+            case R.id.itDbaMaps:
+            case R.id.itOrgMaps:
+            case R.id.itSMMaps:
+            case R.id.itTallerMaps:
+            case R.id.itJuezMaps:
+            case R.id.itPartMaps:
+                //case R.id.itSRMaps:
+            case R.id.itStaffMaps:
+
+                Toast.makeText(getApplicationContext(),"Mapas",Toast.LENGTH_LONG).show();
+                navigateTo(new MapUserLocationFragment(),true);
+                break;
+            case R.id.itDbaTool:
+            case R.id.itOrgTool:
+                //case R.id.itSMExit:
+                //case R.id.itTallerExit:
+                //case R.id.itJuezExit:
+                //case R.id.itPartExit:
+                //case R.id.itSRExit:
+            case R.id.itStaffTool:
+
+                Toast.makeText(getApplicationContext(),"Caja de herramientas",Toast.LENGTH_LONG).show();
+                navigateTo(new ToolboxFragment(),true);
+                break;
+            case R.id.itDbaGeo:
+            case R.id.itOrgGeo:
+            case R.id.itSMGeo:
+            case R.id.itTallerGeo:
+            case R.id.itJuezGeo:
+            case R.id.itPartGeo:
+            case R.id.itSRGeo:
+            case R.id.itStaffGeo:
+
+                Toast.makeText(getApplicationContext(),"Geolocalizacion",Toast.LENGTH_LONG).show();
+                navigateTo(new GeoLocationFragment(),true);
+                break;
+            case R.id.itDbaEmergency:
+            case R.id.itOrgEmergency:
+            case R.id.itSMEmergency:
+            case R.id.itTallerEmergency:
+            case R.id.itJuezEmergency:
+            case R.id.itPartEmergency:
+            case R.id.itSREmergency:
+            case R.id.itStaffEmergency:
+
+                Toast.makeText(getApplicationContext(),"Numeros de Emergencia",Toast.LENGTH_LONG).show();
+                navigateTo(new EmergencyNumbsFragment(),true);
+                break;
+            case R.id.itDbaComunication:
+            case R.id.itOrgComunication:
+            //case R.id.itSMComunication:
+            case R.id.itTallerComunication:
+            case R.id.itJuezComunication:
+            case R.id.itPartComunication:
+            case R.id.itSRComunication:
+            case R.id.itStaffComunication:
+                Toast.makeText(getApplicationContext(),"Comunicacion",Toast.LENGTH_LONG).show();
+                navigateTo(new ComunicationFragment(),true);
+                break;
+            case R.id.itDbaExit:
+            case R.id.itOrgExit:
+            case R.id.itSMExit:
+            case R.id.itTallerExit:
+            case R.id.itJuezExit:
+            case R.id.itPartiExit:
+            case R.id.itSRExit:
+            case R.id.itStaffExit:
+            case R.id.errorLogin:
+                Toast.makeText(getApplicationContext(),"Cerrar sesion",Toast.LENGTH_LONG).show();
+                SharedPreferences loggin = getBaseContext().getSharedPreferences("LoginData", MODE_PRIVATE);
+                SharedPreferences.Editor editor = loggin.edit();
+                editor.clear();
+                editor.commit();
+                UserSingleton.getInstance().clean();
+                this.finish();
+                break;
+            case R.id.itDbaOptions:
+            case R.id.itOrgOptions:
+            case R.id.itSMOptions:
+            case R.id.itTallerOptions:
+            case R.id.itJuezOptions:
+            case R.id.itPartOptions:
+            case R.id.itSROptions:
+            case R.id.itStaffOptions:
+
+                break;
+            case R.id.itOrgReport:
+                navigateTo(new OptionsFragment(),true);
+                break;
+            case R.id.itSMMedicalFiles:
+            case R.id.itSRMedicalFiles:
+                navigateTo(new MedicFileFragment(),true);
+                break;
+            case R.id.itPartSched:
+            case R.id.itSRSched:
+                navigateTo(new SchedFragment(),true);
+                break;
+        }
+
+
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -307,13 +528,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 
-    public void register(View view)
+    public void delay()
     {
-
-    }
-
-    public void login(View view)
-    {
-
+        //delay 500ms
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+            }
+        }, 500);
     }
 }

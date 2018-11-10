@@ -7,61 +7,74 @@
             android:title="@string/Dash"
             />
         <item
-            android:id="@+id/itOrgContacts"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Contacts"
-            />
-        <item
-            android:id="@+id/itOrgControl"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/CP"
-            />
-        <item
             android:id="@+id/itOrgQR"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/QR"
             />
-        <item
-            android:id="@+id/itOrgLocalization"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Localization"
-            />
-        <item
-            android:id="@+id/itOrgMaps"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Maps"
-            />
-        <item
-            android:id="@+id/itOrgTool"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Tool"
-            />
-        <item
-            android:id="@+id/itOrgGeo"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Geo"
-            />
-        <item
-            android:id="@+id/itOrgEmergency"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Emergency"
-            />
-        <item
-            android:id="@+id/itOrgComunication"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Communication"
-            />
     </group>
-    <item android:title="Communicate">
+    <item android:title="Trabajo">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/itOrgControl"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/CP"
+                />
+            <item
+                android:id="@+id/itOrgReport"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Reportes"
+                />
+            <item
+                android:id="@+id/itOrgTool"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Tool"
+                />
+            <item
+                android:id="@+id/itOrgLocalization"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Localization"
+                />
+        </menu>
+    </item>
+    <item android:title="Usuario">
+        <menu>
+            <item
+                android:id="@+id/itOrgContacts"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Contacts"
+                />
+            <item
+                android:id="@+id/itOrgMaps"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Maps"
+                />
+            <item
+                android:id="@+id/itOrgGeo"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Geo"
+                />
+            <item
+                android:id="@+id/itOrgComunication"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Communication"
+                />
+        </menu>
+    </item>
+    <item android:title="Options">
+        <menu>
+            <item
+                android:id="@+id/itOrgEmergency"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Emergency"
+                />
+            <item
+                android:id="@+id/itOrgOptions"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Org" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/itOrgExit"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Cerrar Sesion" />
         </menu>
     </item>
 </menu>

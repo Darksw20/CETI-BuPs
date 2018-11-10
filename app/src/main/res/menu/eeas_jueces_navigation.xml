@@ -2,66 +2,59 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/itJuezDash"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Dash"
-            />
-        <item
-            android:id="@+id/itJuezContacts"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Contacts"
-            />
-        <item
-            android:id="@+id/itJuezControl"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/CP"
-            />
-        <item
             android:id="@+id/itJuezQR"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/QR"
             />
-        <item
-            android:id="@+id/itJuezLocalization"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Localization"
-            />
-        <item
-            android:id="@+id/itJuezMaps"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Maps"
-            />
-        <item
-            android:id="@+id/itJuezTool"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Tool"
-            />
-        <item
-            android:id="@+id/itJuezGeo"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Geo"
-            />
-        <item
-            android:id="@+id/itJuezEmergency"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Emergency"
-            />
-        <item
-            android:id="@+id/itJuezComunication"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Communication"
-            />
     </group>
-    <item android:title="Communicate">
+    <item android:title="Trabajo">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/itJuezControl"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Gestor de Concursos"
+                />
+        </menu>
+    </item>
+    <item android:title="Usuario">
+        <menu>
+            <item
+                android:id="@+id/itJuezMaps"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Maps"
+                />
+            <item
+                android:id="@+id/itJuezComunication"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Communication"
+                />
+            <item
+                android:id="@+id/itJuezGeo"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Geo"
+                />
+            <item
+                android:id="@+id/itJuezContacts"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Contacts"
+                />
+        </menu>
+    </item>
+    <item android:title="Options">
+        <menu>
+            <item
+                android:id="@+id/itJuezEmergency"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Emergency"
+                />
+            <item
+                android:id="@+id/itJuezOptions"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Juez" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/itJuezExit"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Cerrar Sesion" />
         </menu>
     </item>
 </menu>

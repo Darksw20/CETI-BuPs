@@ -1,6 +1,5 @@
 package com.dk.ricardo.eeas2.fragments;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +20,11 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.dk.ricardo.eeas2.Entidades.CustomJsonArrayRequest;
-import com.dk.ricardo.eeas2.Entidades.UserSingleton;
-import com.dk.ricardo.eeas2.Entidades.VolleySingletonAdapter;
+import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
+import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
+import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
 import com.dk.ricardo.eeas2.R;
 import com.dk.ricardo.eeas2.activities.MainActivity;
-import com.dk.ricardo.eeas2.activities.splashScreen;
 
 import org.json.JSONObject;
 import java.util.HashMap;
@@ -40,10 +37,8 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class LoginFragment extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener
 {
-    private boolean validado,tipoOf;
     private int tipo;
-    private String user, pass;
-
+    String user, pass;
     SharedPreferences loggin;
 
     @Override
@@ -56,192 +51,62 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         MaterialButton loginButton = view.findViewById(R.id.loginButton);
 
 
-        //TODO: Agregar shared preferences
-        try
-        {
+        //TODO: Probar shared preferences
+        try {
             loggin = getContext().getSharedPreferences("LoginData", MODE_PRIVATE);
 
-            tipo=loggin.getInt("type",404);
-            user=loggin.getString("user","404");
-            pass=loggin.getString("pass","404");
+            tipo = loggin.getInt("type", 404);
+            user = loggin.getString("user", "404");
+            pass = loggin.getString("pass", "404");
 
-            if(tipo!=404||!user.equals("404")||!pass.equals("404"))
-            {
-                UserSingleton.getInstance().setCum(user);
-                UserSingleton.getInstance().setPass(pass);
-                UserSingleton.getInstance().setTipoUser(tipo);
+            if (tipo != 404 || !user.equals("404") || !pass.equals("404")) {
+                try{
+                    UserSingleton.getInstance().setCum(user);
+                    UserSingleton.getInstance().setPass(pass);
+                    UserSingleton.getInstance().setTipoUser(tipo);
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
                 //se hace query, si los datos coinciden con alguna cuenta se entra al sistema
                 Intent inicio = new Intent(getActivity(), MainActivity.class);
                 startActivity(inicio);
+                getActivity().finish();
             }
-
-
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-        //TODO: Revisar que los errores coincidan con lo que se escribio en la propuesta DER
-        loginButton.setOnClickListener(new View.OnClickListener()
-        {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
-                if(isUserValid(userEditText.getText())||isPasswordValid(passwordEditText.getText()))
+            public void onClick(View view) {
+                if(isPasswordValid(passwordEditText.getText()))
                 {
-                    userTextInput.setError(getString(R.string.eeas_error_user));
+                    passwordTextInput.setError(getString(R.string.eeas_error_password));
                 }
                 else
                 {
                     userTextInput.setError(null);//limpiar ambos errores
                     passwordTextInput.setError(null); // Clear the error
-                    cargarWebServiceAuth("loginValidation.php",userEditText.getText().toString(),passwordEditText.getText().toString());
-                    Toast.makeText(getContext(),""+tipo,Toast.LENGTH_SHORT).show();
-                    if(tipo!=404&&tipo!=0)
+                    try
                     {
-
-
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run()
-                            {
-                                Intent intent=new Intent(getActivity(),MainActivity.class);
-                                startActivity(intent);
-                                //finish();
-                            }
-                        },2000);
-                    }
-                    else
+                        cargarWebServiceAuth("loginValidation.php",userEditText.getText().toString(),passwordEditText.getText().toString());
+                    }catch (Exception e)
                     {
-                        //error de tipo de usuario
+                        e.printStackTrace();
                     }
+                    user=userEditText.getText().toString();
+                    pass=passwordEditText.getText().toString();
                 }
-
-                // Clear the error once more than 8 characters are typed.
-                passwordEditText.setOnKeyListener(new View.OnKeyListener()
-                {
-                    @Override
-                    public boolean onKey(View view, int i, KeyEvent keyEvent)
-                    {
-                        if (!isPasswordValid(passwordEditText.getText()))
-                        {
-                            passwordTextInput.setError(null); //Clear the error
-                        }
-                        return false;
-                    }
-                });
             }
         });
         return view;
     }
 
-    /**
-     * Este metodo sirve para saber si el usuario ingresado si existe dentro de la base de datos
-     * @param text
-     * Es el texto que recibe de userEditText
-     * @return
-     * Regresa un valor booleano que muestra si existe o no el Usuario en la base de datos
-     */
-/*
-    //TODO: Hacer el php para esta funcion: userNameAvailable.php
-    private boolean isUserValid(@NonNull Editable text)
-    {
-        try {
-            cargarWebServiceUV("userNameAvailable.php",text.toString());//,text.toString());
-        }catch (Exception e)
-        {
-            Log.e("Error Raro","no carga esta madre");
-            validado=false;
-        }
-
-        return validado;
-    }
-
-    /**
-     * Es un metodo para saber si la contraseña tiene las caracteristicas minimas necesarias
-     * para poder ser enviado al servidor las cuales son:
-     *      -Debe ser Mayor o igual a 8 Caracteres
-     *      -Debe incluir un numero
-     *      -Debe incluir un digito especial
-     * @param text
-     * Es el texto que recibe de el campo PassEditText
-     * @return
-     * Retorna un valor booleano que dice si es valido o no
-     */
-/*
-    //TODO: Agregar condiciones 2 y 3
-    private boolean isPasswordValid(@Nullable Editable text) {
-        return !(text != null && text.length() >= 8);
-    }
-
-
-
-    private void cargarWebServiceUV(String webService,final String user)
-    {
-        tipoOf=false;
-        progreso=new ProgressDialog(getContext());
-        progreso.setMessage("Revisando solicitud...uv");
-        progreso.show();
-
-        String ip= getString(R.string.ip_webServices), url=""+ip+webService;
-
-        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
-        {
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("CUM",user);
-                return params;
-            }
-        };
-        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
-    }
-
-    //Agregar en ves de dos parametros un array
-
     private void cargarWebServiceAuth(String webService,final String user,final String password)
     {
-        tipoOf=true;
-        progreso=new ProgressDialog(getContext());
-        progreso.setMessage("Revisando solicitud...auth");
-        progreso.show();
-
         String ip= getString(R.string.ip_webServices), url=""+ip+webService;
-
         CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
         {
             @Override
@@ -253,46 +118,107 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
             }
         };
         VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
-    }
-
-
-
-
-
-
-
-}
-*/
-    return view;
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-
-        Log.i("ERROR",error.toString());
-
-    }
-    @Override
-    public void onResponse(JSONObject response) {
-        if(tipoOf)
-        {
-            try
-            {
-                validado=response.getBoolean("validado");
-            }catch (Exception e)
-            {
-                Log.e("ErrorParse",""+e);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
             }
+        }, 500);
+    }
+    //TODO: Agregar condiciones 2 y 3
+    /**
+     * Es un metodo para saber si la contraseña tiene las caracteristicas minimas necesarias
+     * para poder ser enviado al servidor las cuales son:
+     *      -Debe ser Mayor o igual a 8 Caracteres
+     *      -Debe incluir un numero
+     *      -Debe incluir un digito especial
+     * @param text
+     * Es el texto que recibe de el campo PassEditText
+     * @return
+     * Retorna un valor booleano que dice si es valido o no
+     */
+    private boolean isPasswordValid(@Nullable Editable text) {
+        return !(text != null && text.length() >= 8);
+    }
+    @Override
+    public void onErrorResponse(VolleyError error)
+    {
+        if(tipo>=1&&tipo<=8)
+        {
+            Log.i("ERROR",error.toString());
         }
         else
         {
-            try
+            //error de tipo de usuario
+            if(tipo==0)
             {
-                tipo=response.getInt("tipo");
-            }catch (Exception a)
+                //userTextInput.setError(getString(R.string.eeas_error_user));
+                Toast.makeText(getContext(),"Usuario no existe",Toast.LENGTH_SHORT).show();
+            }else if(tipo==404)
             {
-                Log.e("errorNose",""+a);
+                Toast.makeText(getContext(),"Error en conexion",Toast.LENGTH_SHORT).show();
+            }else if(tipo==2002)
+            {
+                Toast.makeText(getContext(),"Error en conexion a Base de datos",Toast.LENGTH_SHORT).show();
             }
+            else
+            {
+                Toast.makeText(getContext(),"Error "+tipo,Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+    @Override
+    public void onResponse(JSONObject response)
+    {
+        try
+        {
+            tipo=response.getInt("tipo");
+            if(tipo>=1&&tipo<=8)
+            {
+                SharedPreferences.Editor x;
+                x= loggin.edit();
+                x.putInt("type",tipo);
+                x.putString("user",user);
+                x.putString("pass",pass);
+                x.commit();
+                UserSingleton.getInstance().setCum(user);
+                UserSingleton.getInstance().setPass(pass);
+                UserSingleton.getInstance().setTipoUser(tipo);
+                Intent intent=new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+                try {
+                    getActivity().finish();
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+            else
+            {
+                //error de tipo de usuario
+                if(tipo==0)
+                {
+                    //userTextInput.setError(getString(R.string.eeas_error_user));
+                    Toast.makeText(getContext(),"Usuario no existe",Toast.LENGTH_SHORT).show();
+                }else if(tipo==404)
+                {
+                    Toast.makeText(getContext(),"Error en conexion",Toast.LENGTH_SHORT).show();
+                }else if(tipo==2002)
+                {
+                    Toast.makeText(getContext(),"Error en conexion a Base de datos",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(getContext(),"Error "+tipo,Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }catch (Exception a)
+        {
+            Log.e("errorNose",""+a+" ee:"+tipo);
         }
     }
 }

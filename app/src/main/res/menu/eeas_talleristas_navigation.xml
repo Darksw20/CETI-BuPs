@@ -2,66 +2,59 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/itTallerDash"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Dash"
-            />
-        <item
-            android:id="@+id/itTallerContacts"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Contacts"
-            />
-        <item
-            android:id="@+id/itTallerControl"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/CP"
-            />
-        <item
             android:id="@+id/itTallerQR"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/QR"
             />
-        <item
-            android:id="@+id/itTallerLocalization"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Localization"
-            />
-        <item
-            android:id="@+id/itTallerMaps"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Maps"
-            />
-        <item
-            android:id="@+id/itTallerTool"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Tool"
-            />
-        <item
-            android:id="@+id/itTallerGeo"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Geo"
-            />
-        <item
-            android:id="@+id/itTallerEmergency"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Emergency"
-            />
-        <item
-            android:id="@+id/itTallerComunication"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/Communication"
-            />
     </group>
-    <item android:title="Communicate">
+    <item android:title="Trabajo">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/itTallerControl"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Gestor de talleres"
+                />
+        </menu>
+    </item>
+    <item android:title="Usuario">
+        <menu>
+            <item
+                android:id="@+id/itTallerContacts"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Contacts"
+                />
+            <item
+                android:id="@+id/itTallerComunication"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Communication"
+                />
+            <item
+                android:id="@+id/itTallerMaps"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Maps"
+                />
+            <item
+                android:id="@+id/itTallerGeo"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Geo"
+                />
+        </menu>
+    </item>
+    <item android:title="Options">
+        <menu>
+            <item
+                android:id="@+id/itTallerEmergency"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/Emergency"
+                />
+            <item
+                android:id="@+id/itTallerOptions"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Taller" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/itTallerExit"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Cerrar Sesion" />
         </menu>
     </item>
 </menu>

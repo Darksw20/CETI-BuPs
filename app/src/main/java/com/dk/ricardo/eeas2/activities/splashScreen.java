@@ -34,7 +34,8 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
                 if (savedInstanceState == null)
                 {
                     //Usar esta linea para cambiar de fragment en lo que arreglo el show
-                    getSupportFragmentManager().beginTransaction().add(R.id.containerLogin, new LoginFragment()).commitAllowingStateLoss();
+                    //getSupportFragmentManager().beginTransaction().add(R.id.containerLogin, new LoginFragment()).commitAllowingStateLoss();
+                    navigateTo(new LoginFragment(), false);
                     final int uiOptions2=View.SYSTEM_UI_FLAG_VISIBLE;
                     decorView.setSystemUiVisibility(uiOptions2);
 

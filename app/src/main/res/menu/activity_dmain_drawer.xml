@@ -9,7 +9,6 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/eeas_button_Login"
             />
-
     </group>
 
 
