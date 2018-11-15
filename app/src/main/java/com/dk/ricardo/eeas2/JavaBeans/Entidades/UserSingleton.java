@@ -1,14 +1,11 @@
 package com.dk.ricardo.eeas2.JavaBeans.Entidades;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Handler;
-import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.dk.ricardo.eeas2.fragments.LoginFragment;
 import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
 import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
 import com.dk.ricardo.eeas2.R;
@@ -48,7 +45,7 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
             }
         };
         VolleySingletonAdapter.getInstanceVolley(context).addToRequestQueue(customjsonArrayRequest);
-        delay();
+        delay(500);
     }
 
     public static UserSingleton getInstance()
@@ -358,7 +355,7 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
 
 
     }
-    public void delay()
+    public void delay(int time)
     {
         //delay 500ms
         final Handler handler = new Handler();
@@ -367,6 +364,6 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
             public void run() {
                 // Do something after 5s = 5000ms
             }
-        }, 500);
+        }, time);
     }
 }

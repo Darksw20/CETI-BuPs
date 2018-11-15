@@ -10,7 +10,6 @@ public class VolleySingletonAdapter
 {
     private static VolleySingletonAdapter instanceVolley;
     private RequestQueue request;
-//    private StringRequest request;
     private static Context contexto;
 
     private VolleySingletonAdapter(Context context) {

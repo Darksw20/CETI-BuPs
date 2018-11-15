@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">B-upS</string>
-    <string name="ip_webServices">http://192.168.0.102:1234/BupsWeb/webServices/</string>
+    <string name="ip_webServices">http://192.168.137.60:1234/BupsWeb/webServices/</string>
+    <string name="ip_web">http://192.168.137.60:1234/BupsWeb/bupsWeb/Html/Base.html</string>
+    <string name="API_KEY" templateMergeStrategy="preserve" translatable="false">AIzaSyCEEP77NR9rp45HaC6TA22H_mR8rFCfUCQ</string>
+
     <string name="Dash">Dashboard</string>
     <string name="Contacts">Contacts</string>
     <string name="CP">Control Panel</string>
@@ -44,11 +47,641 @@
     <string name="shr_product_description">Secondary text</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_dmain">DMainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="title_activity_dmain">Menu</string>
+    <string name="navigation_drawer_open">Open Menu</string>
+    <string name="navigation_drawer_close">Close Menu</string>
+    <string name="nav_header_title">User</string>
+    <string name="nav_header_subtitle">User Type</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="Reglamentos">Reglamentos</string>
+    <string name="Reglamento_Colomos">REGLAMENTO PARA EL USO Y PRESERVACION DEL AREA NATURAL PROTEGIDA,  OPD BOSQUE LOS COLOMOS
+
+
+
+CAPITULO I
+DISPOSICIONES GENERALES
+
+Artículo 1. Las disposiciones del presente reglamento son de orden público e interés social y tienen por objeto regular  el uso y preservación del Organismo Público Descentralizado de la Administración Pública Municipal de Guadalajara denominado “Bosque los Colomos”, encargado de la administración y vigilancia del Área Natural Protegida bajo la categoría de manejo de Área Municipal de Protección Hidrológica.
+
+Artículo 2. Para los efectos del presente Reglamento se entiende por:
+
+I.	Área Natural Protegida (ANP): Zona del territorio estatal en que los ecosistemas originales que las conforman no han sido significativamente alterados por la actividad del hombre, y que han quedado sujetas al régimen de protección.
+II.	Área Municipal de protección hidrológica: es aquella destinada a la preservación de ríos, manantiales y aguas subterráneas, a través de la protección de cuencas, áreas boscosas, llanuras y todas aquellas áreas que tengan impacto en las fuentes de producción y/o abastecimiento de agua, ubicadas en el territorio de un municipio.
+III.	Ayuntamiento: Órgano de Gobierno Municipal de Guadalajara;
+IV.	Bosque: Bosque los Colomos Área Natural Protegida bajo la categoría de manejo de área     Municipal de Protección Hidrológica.
+V.	Comerciante:  a la persona física o jurídica a la que se le otorga la concesión o permiso para realizar actividades comerciales dentro del Bosque a cambio de una contraprestación
+VI.	Comisión Reguladora de Productos y Servicios: equipo de trabajo conformado por la subdirección de Administración,  Director del Bosque para brindar atención así como supervisión a los comerciantes en el cumplimiento de su contrato.
+VII.	Comité Técnico-Ciudadano: Grupo multidisciplinario de especialistas en materia de salud ambiental, protección, conservación y manejo de recursos naturales, así como de representantes de organizaciones ambientalistas, asociaciones y líderes sociales; con carácter consultivo.
+VIII.	Consejo Directivo: Máxima autoridad del Organismo Público Descentralizado de la Administración Pública Municipal de Guadalajara denominado “Bosque Los Colomos”
+IX.	Cuerpo de  Agua: Lugar donde emerge u ocurre el agua en distintas formas, y ésta se almacena  o fluye hasta un punto de salida que puede ser otro cuerpo receptor interior, a través de una red hidrológica de cauces, ductos o galerías que convergen en un principal. Dicho espacio se delimita por una diversidad topográfica, donde coexisten los recursos agua, suelo, flora, fauna y otros recursos relacionados con éstos y el medio ambiente.
+X.	Dirección: la Dirección del Bosque Los Colomos.
+XI.	Donante: Persona física o jurídica que otorga una aportación liquida, en especie o servicio, producto de una acción generosa y voluntaria que se realiza en beneficio del Bosque sin ánimo de lucro y se entrega de manera desinteresada
+XII.	Infraestructura: Conjunto de elementos, mobiliario o servicios que están dentro del Bosque dispuestos para cumplir con un objetivo práctico o de ornato.
+XIII.	OPD: Organismo Público Descentralizado de la Administración Pública Municipal de Guadalajara.
+XIV.	Patrocinador: Persona física o moral que realiza contribuciones financieras al Bosque con fines publicitarios para su marca, productos o servicios que proporcione.
+XV.	Prestador: Persona física o jurídica que previa autorización del Bosque, imparte algún curso, clase o taller de tipo educativo, cultural, deportivo o artístico para el público en general, pudiendo ser gratuito o no.
+XVI.	Usuario o visitante: Toda persona que acude al Bosque Los Colomos.
+XVII.	Subdirección de Procuración de Fondos: el área encargada de conseguir recursos municipales, estatales, federales y privados, a fin de iniciar con los trabajos de mejora en infraestructura, manejo administrativo e implementación de proyectos estratégicos para el Bosque, a fin no solo de cumplir con sus objetivos, sino lograr la sustentabilidad ambiental y económica; (en tanto no esté constituida sus  funciones serán ejercidas por la Dirección del Bosque).
+Artículo 3.- Son autoridades responsables de vigilar la observancia y aplicación del presente Reglamento, en el ámbito de sus respectivas competencias:
+
+I. El Ayuntamiento;
+II. La Dirección del Bosque;
+III. El Consejo Directivo del Bosque, y,
+IV. La Comisaría de la Policía Preventiva Municipal.
+V. Sistema Intermunicipal de Agua Potable y Alcantarillado.
+
+Artículo 4. El Bosque comprende una superficie de 91.45 Hectáreas, y para los efectos de este Reglamento se divide en dos secciones: Colomos I  y Colomos II.
+
+Artículo 5.  El horario de funcionamiento del Bosque es de 6:00 a 20:00 horas de lunes a domingo. El personal del Bosque invitará a  los usuarios a desalojar a partir de las 19:30hrs.  La Dirección podrá determinar anualmente el cierre temporal, total o parcial del Bosque para su revitalización y mantenimiento, o por eventualidades de emergencia, caso fortuito o fuerza mayor, que exijan el cierre del Bosque.
+
+Artículo 6. El Bosque no se hace responsable por accidentes ni objetos o pertenencias olvidadas dentro del mismo.
+
+Artículo 7. Es obligación de usuarios o visitantes respetar a los demás usuarios o visitantes, así como al personal que labora dentro del Bosque, debiendo abstenerse de cualquier agresión física o verbal.
+
+Artículo 8. Cualquier daño a las instalaciones o al patrimonio del Bosque por parte de usuarios o visitantes, deberá ser pagado o restituido en forma inmediata, de lo contrario será consignado ante las autoridades correspondientes.
+Artículo 9. Todo usuario o visitante, así como el personal que labora en el Bosque deberá transitar siempre por su derecha y en el sentido correcto, evitando bloquear las vialidades o el paso de otros visitantes.
+
+Artículo 10. Se requerirá́ autorización por parte de la Dirección, para la realización de las siguientes actividades, en términos de las disposiciones legales aplicables:
+I. Prestación de servicios turísticos:
+a. Visitas guiadas;
+b. Campamentos; y
+c. Servicios de pernocta en instalaciones del bosque
+II. Filmación, fotografía y captura de imágenes o sonidos por cualquier medio, con fines comerciales.
+III. Actividades comerciales.
+IV. Colecta de ejemplares, partes y derivados de la vida silvestre, así́ como de otros recursos biológicos, con fines de investigación científica o con propósitos de enseñanza;
+V. La investigación y monitoreo que requiera manipular ejemplares de especies en riesgo; y
+VI. Realización de obras civiles que, en materia de impacto ambiental, requieran de autorización, independientemente de las autorizaciones que correspondan a otras autoridades en la materia.
+
+Artículo 11. Todas aquellas personas que ingresen al Bosque con motivo de visita a las instituciones establecidas dentro del Bosque señalando de manera enunciativa más no limitativa:  al Lienzo Charro, Vivero de la Secretaría de Desarrollo e Integración Social (SEDIS), Comisión Nacional del Agua (CONAGUA), Talleres Protegidos del Sistema para el Desarrollo Integral de la Familia (DIF Estatal), Centro Cultural ubicado en el Castillo, oficinas del Instituto Nacional de Investigaciones Forestales y Agropecuarias (INIFAP) deberán cumplir con la totalidad de las disposiciones aplicables al Bosque incluyendo las limitaciones que se establecen para el mismo como Área Natural Protegida.
+
+Artículo 12. El Bosque no se hará responsable por la práctica de actividades de cualquier índole dentro de las instalaciones de las instituciones arriba referidas, las cuales serán por cuenta y riesgo del visitante.
+
+CAPITULO II
+DEL USO DE LAS INSTALACIONES
+
+Artículo 13. La práctica de actividades culturales, sociales, recreativas y deportivas dentro del Bosque será por cuenta y riesgo del usuario o visitante, deslindando al Bosque de cualquier responsabilidad.
+
+Artículo 14. Existen 4 tipos de caminos en el Bosque, los cuales se clasifican conforme a su uso o destino como sigue:
+
+I.	Senderos o caminos recreativos.- para tránsito de peatones
+II.	Circuitos deportivos o pistas.- se utilizan preponderadamente para correr, para lo cual los corredores no deberán de ir más de dos personas juntas hombro con hombro y deberán evitar ir en grupo para respetar el tránsito de los demás usuarios.
+III.	Andadores.- son de adoquín y de uso para los usuarios o visitantes en general y no forman parte de los circuitos deportivos. Los vehículos del Bosque que transiten estas zonas deberán ir a una velocidad máxima de 10 kilómetros por hora con las luces intermitentes encendidas.
+IV.	Empedrado o vialidades interiores.- se permite el tránsito de vehículos autorizados, los cuales  deberán ir a una velocidad máxima de 10 kilómetros por hora con las luces intermitentes encendidas.
+
+Artículo 15. Todos los usuarios o visitantes están obligados y sin excepción a cumplir con la señalética del Bosque.
+
+Artículo 16. La Dirección se reserva el derecho de autorizar, suspender o cancelar cualquier evento deportivo, recreativo o social, cuando los solicitantes, organizadores y/o participantes transgredan el presente ordenamiento y/o pongan en riesgo su integridad física y la de los demás.
+
+Artículo 17. Los asadores del área “Eucaliptos” se podrán utilizar libremente y sin costo siempre y cuando se cumplan con las disposiciones siguientes:
+
+I.	No se deben pintar ni maltratar
+II.	Se deberá recolectar la basura al terminar de utilizarlos
+III.	Se deberá de apagar el fuego al terminar de usarlos y dejarlos limpios; y
+IV.	Cualquier disposición que llegue a establecer la Dirección
+
+Artículo 18. Será responsabilidad de los usuarios y visitantes cualquier daño causado a las instalaciones, equipamiento o áreas del Bosque, por los incendios ocasionados por error, negligencia o intención.
+
+Artículo 19. El uso de papalotes o cometas será exclusivo en el área de campamentos.
+
+CAPITULO III
+DE LAS PROHIBICIONES
+
+Artículo 20. Está prohibido introducirse a los cuerpos de agua del Bosque en lugares distintos a los expresamente diseñados y/o autorizados por incumplimiento a este artículo.
+
+Artículo 21.  Se prohíbe cualquier tipo de construcción en el Bosque, a menos que sea expresamente necesarias para optimizar el uso y conservación del Bosque y previamente autorizadas por las dependencias del Ayuntamiento competentes, sujetándose a las restricciones y requerimientos del Decreto en el que se declara a Bosque los Colomos como Área Natural Protegida bajo la categoría de Manejo de área municipal de Protección Hidrológica comprendida en el Municipio de Guadalajara; así como lo dispuesto en la Ley de Aguas Nacionales, La ley del Agua para el Estado de Jalisco y sus Municipios.
+
+Artículo 22. Queda prohibido arrojar, verter, abandonar o descargar basura y objetos de naturaleza orgánica o inorgánica, o de estado sólidos o líquido fuera de los depósitos destinados para ello; así como tirar o depositar substancias o compuestos que alteren las características físicas o químicas del suelo o cuerpos de agua, el lago o cualquier otro tipo de contaminante, como insecticidas, fungicidas y pesticidas, entre otros.
+
+Artículo 23. Solo se permite encender fogatas y hornillas en el área de campamentos y tendrá que ser supervisado por el personal del Centro de Educación y Cultura Ambiental del Bosque; y con mucha precaución en los asadores de la zona de Eucaliptos.
+
+Artículo 24. Queda prohibida la posesión y uso de explosivos, cohetes y cualquier tipo de sustancias químicas o inflamables que atenten contra la integridad física y ambiental o contra los bienes e instalaciones que conforman el patrimonio del Bosque.
+
+Artículo 25. No se permite la emisión de sonido por medio de ningún tipo de amplificador, a excepción de que se cuente con la autorización por escrito de la Dirección en cuyo caso los decibeles máximos permitidos son 55 a un metro de la fuente del sonido.
+
+Artículo 26. Se prohíbe a los visitantes introducir flora y fauna de cualquier especie, incluyendo mascotas.  Sólo  se permitirá el acceso de perros-guía  como apoyo a personas con discapacidad visual.
+
+Artículo 27. Está prohibido alimentar a las especies animales que se encuentran en el Bosque, a excepción de aquellas en las que se indique que esté expresamente permitido y solamente utilizando alimento autorizado por la Dirección.
+
+Artículo 28. Se prohíbe la entrada de motos, bicicletas, patines, triciclos u otros vehículos motorizados, independientemente de que éstas se encuentren o no funcionando, a excepción de los usados por el personal operativo y de seguridad del Bosque.
+
+Artículo 29.  Como medida de seguridad en el Área Natural Protegida bajo la categoría de manejo de Área Municipal de Protección Hidrológica,  está  estrictamente  prohibido fumar dentro del polígono que comprende.
+
+Artículo 30. No se permite introducir al Bosque armas, objetos o utensilios punzocortantes medianos o grandes  con los que se pueda causar daño a las personas, bienes e instalaciones.
+
+Artículo 31. No se permitirá la entrada y permanencia en el Bosque, a personas en estado de ebriedad o bajo la influencia de estupefacientes o psicotrópicos.
+
+Artículo 32. Está prohibido pernoctar y/o acampar fuera de los lugares destinados para tal efecto y sin autorización. En los lugares destinados a campamentos deberá siempre hacerse en compañía del personal del Bosque.
+
+Artículo 33. Queda prohibido arrojar piedras u objetos que molesten o dañen a la flora y fauna del Bosque.
+
+Artículo 34. Queda prohibido extraer del Bosque flora y fauna. La Dirección podrá autorizar la salida previa orden escrita y cuando exista causa que lo justifique, o bien en caso de una emergencia o fuerza mayor.
+
+Artículo 35. No se alterará o destruirá por cualquier medio o acción, los sitios de alimentación, anidación, refugio o reproducción de las especies silvestres.
+
+Artículo 36. Queda estrictamente prohibido cortar,  marcar o dañar de cualquier forma árboles, plantas y a la flora del Bosque en general.
+
+Artículo 37. Está prohibido interrumpir, desviar, rellenar o desecar flujos hidráulicos o cuerpos de agua.
+
+Artículo 38. Está prohibido marcar o pintar las instalaciones, equipamiento, bienes muebles y formaciones rocosas del Bosque.
+
+Artículo 39. Está prohibido realizar cualquier tipo de aprovechamiento o explotación de los recursos forestales con fines comerciales.
+
+Artículo 40. No se permite el fecalismo humano al aire libre.
+
+Artículo 41. Está prohibido escupir en el Bosque.
+
+Artículo 42. Queda prohibido el uso de drones y cualquier otro equipo de radiocontrol dentro del Bosque. Podrán utilizarse únicamente para proyectos especiales con autorización de la Dirección.
+
+Artículo 43. Está prohibido realizar actos de proselitismo, partidistas o religiosos.
+
+Artículo 44. Queda prohibido realizar actos inmorales o que atenten con las buenas costumbres.
+
+Artículo 45. Queda prohibido ingresar al Bosque material pornográfico o sexualmente explícito.
+
+Artículo 46. Se prohíbe la introducción y venta de todo tipo de bebidas alcohólicas y tabaco.
+
+Artículo 47. Queda prohibido ingresar y/o transitar por el bosque sin portar playera  o camisa.
+
+CAPITULO IV
+DE LOS ESTACIONAMIENTOS
+
+Artículo 48. Son estacionamientos públicos del Bosque los localizados en ingreso Patria, ingreso El Chaco e ingreso por Torreón.
+
+Artículo 49. Se consideran estacionamientos especiales los localizados dentro de Talleres Protegidos del DIF, los estacionamientos interiores del Lienzo Charro, INIFAP, y CONAGUA, así como el  estacionamiento de personal ubicado a un lado del Castillo para  uso de  empleados y camiones de instituciones educativas.
+
+Artículo 50. Los usuarios deberán dejar bien cerrados sus carros y serán los únicos responsables de tomar todas las medidas preventivas necesarias para evitar incidentes negativos con sus automóviles o pertenencias dejadas dentro del mismo, ya que el Bosque no se hará responsable.
+
+Artículo 51. Todos los usuarios deberán utilizar un solo lugar de estacionamiento para su automóvil, evitando ocupar dos o más espacios.
+
+Artículo 52. Todos los usuarios deberán respetar los sentidos de circulación de las calles interiores de los estacionamientos.
+
+Artículo 53. Queda prohibido bloquear el tránsito  a otros vehículos estacionados.
+
+Artículo 54. Todo usuario deberá hacer el pago correspondiente por el uso del estacionamiento según se estipule en la Ley de Ingresos vigente, a excepción de lo señalado por el artículo 56 de este reglamento.
+
+Artículo 55. La velocidad máxima permitida para conducir en las calles interiores, de los estacionamientos es de 10 kilómetros por hora. El automovilista, motociclista o ciclista están obligados a ceder el paso al peatón, caminante o trotador, el incumplimiento de lo anterior de parte del conductor lo hace responsable de cualquier daño que genere, sea por error, negligencia, descuido o mala fe.
+
+Artículo 56. La Dirección determinará  los casos en los que se autorizará el uso de tarjetas de ingreso vehicular y la cantidad máxima de tarjetas a otorgarse para las instituciones establecidas dentro del Bosque. Las tarjetas de ingreso vehicular se otorgarán mediante el pago de una cuota única anual, permitiendo el vehículo autorizado, entradas y salidas múltiples a los estacionamientos indicados por la Dirección exentándolo del pago de la tarifa de ingreso a estacionamientos. Solamente se otorgará una tarjeta de ingreso vehicular por vehículo y la misma será intransferible a otra persona u otro vehículo diferente al autorizado.
+
+Artículo 57. Para los casos de las instituciones con instalaciones u oficinas dentro del Bosque, el ingreso de vehículos será exclusivamente por el estacionamiento de Torreón a excepción de vehículos que por su tamaño u otras características  no sea posible, en cuyo caso deberá acceder por Patria con previa autorización.
+
+Artículo 58. El mal uso de la tarjeta de ingreso vehicular o en contravención a estas disposiciones ocasionará la cancelación permanente de la misma para el titular de la tarjeta o vehículo que se trate.
+
+Artículo 59. Las tarjetas de ingreso vehicular tendrán vigencia de un año y deberá cubrirse su costo anual de conformidad con la Ley de Ingresos del Municipio de Guadalajara  vigente o con la lista de conceptos de cobro autorizada por el Consejo Directivo.
+
+Artículo 60. En el estacionamiento destinado de motocicletas solo se pueden estacionar vehículos automotores de dos ruedas.
+
+Artículo 61. El conductor de motocicleta, bicicleta o vehículo deberá respetar los espacios destinados para el peatón, por lo que no está permitido invadir banquetas ni áreas peatonales.
+
+Artículo 62. Deberán respetarse los cajones exclusivos para personas con discapacidad, de la tercera edad y mujeres embarazadas
+
+Artículo 63. Para cualquier asunto no contemplado dentro de este reglamento, la Dirección analizará y resolverá según sea el caso.
+
+CAPITULO V
+DEL COMERCIO
+
+Artículo 64. Es indispensable contar con la autorización por escrito emitida por la Dirección para poder llevar a cabo cualquier actividad comercial dentro del Bosque, así como firmar un contrato de concesión ó permiso (entre el Bosque y el comerciante),  una vez firmado,  el comerciante deberá estar al corriente con el pago de la cuota correspondiente.
+
+Artículo 65. Para poder llevar a cabo actividades comerciales dentro del Bosque, los interesados deberán contar con la licencia municipal que corresponda según el giro.
+
+Artículo 66. Cualquier actividad comercial dentro de ambas secciones del Bosque se podrá llevar a cabo exclusivamente en aquellas zonas que al efecto determine la Dirección; asimismo el número de comerciantes estará limitado a la asignación de locales y lugares que establezca la propia Dirección.
+
+Artículo 67. El pago de la concesión o permiso  para realizar cualquier tipo de actividad comercial o de servicios se tendrá que realizar antes del día diez de cada mes, haciéndose acreedor a una penalización de 5% por cada 10 días de retraso en el pago. Si en un plazo máximo de 30 días hábiles no cumple con el pago total del adeudo será motivo de la cancelación o rescisión inmediata del contrato de concesión o permiso respectivo, debiendo desocupar y/o entregar el local o lugar de ejercicio de sus actividades correspondiente en un plazo no mayor a tres días hábiles posteriores a la notificación o aviso de rescisión o cancelación.
+
+Artículo 68. El distintivo así como el diseño del mobiliario que utilicen los comerciantes  y prestadores de servicios, deberá sujetarse a las disposiciones administrativas que emita la Dirección.
+
+Artículo 69.  Para los efectos de este Reglamento, el comercio en el Bosque se clasifica en:
+
+I.	Comercios Fijos.- aquellos que se encuentre enclavado en la vía pública o en este caso, territorio    del Bosque, de manera que no se pueden mover de lugar;
+II.	Comercios Semifijos.- aquellos que, a pesar de sus dimensiones, pueda moverse, con auxilio de cualquier medio de locomoción o se encuentre integrado a un vehículo de locomoción.
+
+ Artículo 70.  El Bosque a través de la Dirección expedirá la autorización correspondiente para ejercer el comercio en los establecimientos a que se refiere las fracciones  I y II del artículo anterior, a través del siguiente procedimiento:
+
+I.	Para obtener la  concesión o permiso para ejercer el comercio los interesados deberán presentar una solicitud por escrito a la Dirección, que contenga cuando menos una descripción general de los productos o servicios que pretende ofertar.
+II.	La Dirección en conjunto a la Subdirección de Procuración de Fondos analizarán las propuestas.
+III.	De ser autorizada la solicitud, se elaborará un contrato para ejercer el comercio en espacios fijos  o semifijos, con vigencia máxima de un año; obligándose así tanto el comerciante como su personal operativo al cumplimiento de los reglamentos del Bosque.
+IV.	El solicitante deberá contar con licencia municipal vigente a nombre del solicitante según el giro de actividades a realizar.
+V.	Una vez otorgada la concesión o permiso, el interesado deberá realizar el pago del mismo antes del día 10 de cada mes, haciéndose acreedor a una penalización del 5% por cada 10 días de retraso. Si en un plazo máximo de 30 días hábiles no cumple con el pago total del adeudo, será motivo de la cancelación o rescisión inmediata del contrato de concesión o permiso respectivo, debiendo desocupar y/o entregar el local o lugar de ejercicio de sus actividades correspondiente en un plazo no mayor a tres días hábiles posteriores a la notificación o aviso de rescisión o cancelación.
+VI.	El manejo de marcas comerciales está limitado al interior de su espacio, quedando prohibido el uso de cualquier medio o dispositivo de promoción al exterior.
+VII.	Los giros y las condiciones para las concesiones o permisos estarán sujetas a la Comisión Reguladora de  Productos y Servicios;  a falta de esta comisión la tarea recaerá en la Dirección del Bosque.
+
+ Artículo 71.  La autorización o permiso para ejercer actividades comerciales o de servicios que emita el Bosque es personal e intransferible.
+
+Artículo 72.  Los comerciantes deberán sujetarse a los términos de la autorización, permiso concedido o contrato correspondiente, y no está permitido vender productos u ofertar servicios que no estén enlistados en el mismo.
+
+Artículo 73.   Los comerciantes tendrán las siguientes obligaciones:
+
+I.	Conservar en absoluta limpieza el interior y exterior del local o lugar en donde realicen su actividad comercial o de servicios.
+II.	Separar y colocar la basura respetando la separación de residuos en los depósitos asignados.
+III.	Contar con las herramientas indispensables para llevar a cabo la actividad comercial.
+IV.	Para la venta de bebidas y comidas deberá restringirse el uso de productos desechables elaborados con unicel, para lo cual deberán utilizarse productos biodegradables o reutilizables.
+V.	Al término de las actividades diarias  los comerciantes deberán depositar los desperdicios y basura separada en los contenedores ubicados en Torreón para tal fin o retirarlos por sus propios  del Bosque.
+VI.	Seguir los lineamientos de imagen y diseño que la Dirección indique.
+VII.	Está prohibido promocionar o hacer publicidad de cualquier tipo que sea de un giro ajeno al autorizado o en favor de terceros. En caso de que se requiera promoción para su propia actividad comercial, debe estar aprobada por la Dirección.
+VIII.	Utilizar el distintivo  autorizado por la Comisión reguladora de productos y servicios y a falta de esta, por la  Dirección del Bosque,  para el desempeño de su actividad comercial.
+IX.	Limitarse al espacio asignado por la Dirección para realizar la actividad comercial autorizada.
+X.	Para ingresar y ejercer su actividad comercial debe portar en lugar visible el gafete de identificación autorizado provisto por la Dirección.
+XI.	Pagar sus cuotas o rentas, y multas en caso de existir.
+XII.	Las demás disposiciones contenidas en este Reglamento.
+XIII.	Cualquier incumplimiento a las obligaciones aquí referidas, además de las establecidas en su contrato o permiso correspondiente, será motivo de cancelación o rescisión inmediata de la autorización para el ejercicio del comercio sin responsabilidad para el Bosque.
+XIV.	Cada comerciante será responsable de sus obligaciones laborales, fiscales y de seguridad social respecto del personal que contrate para la realización de sus actividades comerciales o de servicios, por lo tanto no existe relación laboral alguna entre el Bosque y los comerciantes y/o sus empleados ni responsabilidad laboral ni de ninguna otra índole hacia éstos.
+
+CAPITULO VI
+DE LA RENTA DE ESPACIOS PARA EVENTOS DENTRO DEL BOSQUE
+
+Artículo 74.- Únicamente podrán realizarse aquellos eventos que hayan sido previa y expresamente autorizados por la Dirección.
+
+Artículo  75.   La Dirección podrá autorizar la realización de eventos en las instalaciones de El Bosque, con las restricciones y lineamientos que se establecen en el presente Capítulo, y demás que determine el Consejo Directivo del Bosque.
+
+Artículo  76.  Las instalaciones que tendrá a disposición el Bosque para eventos son:
+
+I.	Jardín Japonés
+II.	Pérgolas
+III.	Área de Campamentos
+IV.	La Araña
+V.	Otros autorizados por la Dirección
+
+Artículo  77.  Las actividades que podrán realizarse  dentro de las instalaciones del Bosque son:
+
+I.	Toma de fotografía y video
+II.	Eventos lúdicos y recreativos,
+III.	Cursos y capacitaciones
+IV.	Eventos deportivos
+V.	Eventos de promoción del Bosque
+VI.	Eventos artísticos y culturales
+VII.	Exposiciones
+VIII.	Conciertos
+IX.	Congresos
+X.	Ruedas de prensa
+XI.	Eventos de lanzamiento de productos
+XII.	Subastas
+XIII.	Desayunos, comidas , cenas y convivencias sociales tipo coctel
+XIV.	Reuniones de trabajo
+XV.	Cualquier otra actividad no contemplada pasará por un proceso de análisis de la Subdirección de Procuración de Fondos y será autorizada en última instancia por la Dirección.
+
+Artículo  78.   Para la realización de eventos o actividades públicas o privadas dentro del Bosque a que hace referencia el artículo anterior, los interesados deberán pagar la cuota correspondiente de acuerdo con la  lista de conceptos de cobro autorizada por el  Consejo Directivo con una anticipación mínima de 10 días previos al inicio del evento.
+
+
+Artículo  79.  El procedimiento para solicitar el uso de las instalaciones del Bosque y la correspondiente autorización para el evento, es como sigue:
+I.	El interesado deberá presentar un  escrito que contenga al menos: la descripción general del evento a realizar, espacio elegido de los señalados en el artículo 71,  el montaje que desea realizar, fecha y horarios solicitados, cantidad de personas que asistirán y cualquier otro dato que solicite la Dirección.
+II.	La Dirección tendrá la facultad exclusiva de aprobar el evento solicitado, estableciendo las condiciones a que deberá sujetarse su realización.
+III.	El interesado una vez aprobado su evento, deberá suscribir el contrato respectivo con el Bosque. Cualquier cambio en el formato del evento  deberá ser autorizado previamente y por escrito por parte de la Dirección.
+
+Artículo 80.  El ingreso de equipos de sonido, iluminación, decoración o cualquier otro implemento necesario para el evento tendrá que ser notificado con mínimo tres días de anticipación a su llegada al encargado de eventos y concesiones especificando los proveedores para efectos de notificar al equipo seguridad del Bosque. El ingreso de equipo menor podrá realizarse únicamente con vehículos manuales de carga tipo diablitos siempre cumpliendo con el protocolo de registro por el ingreso de El Chaco.
+
+Cualquier traslado de equipos de cualquier especie deberá ser supervisado por personal de seguridad del Bosque. El tamaño y capacidad máxima para el ingreso de un vehículo será de una camioneta equivalente a tres toneladas.
+
+Artículo 81.  Todos los implementos y equipo necesarios para el evento tendrán que retirarse el mismo día al finalizar el evento, salvo autorización previa de la Dirección.
+
+Artículo 82.  Los proveedores, personal de montaje y el equipo organizador tendrán que presentarse con identificación vigente para registrarse en la entrada de El Chaco, quienes necesariamente deberán ser mayores de edad. Al registro, se les entregará un gafete que deberán portar y estar visible durante su estancia en el Bosque.
+
+Artículo 83.  En caso de requerir necesidades extras de energía eléctrica a las existentes en las instalaciones del Bosque deberán ser contratadas a nombre y cuenta del responsable del evento.
+
+Artículo 84.  Queda estrictamente prohibido el uso de cualquier mecanismo para preparar o calentar alimentos a base de fuego; únicamente se permitirán dispositivos eléctricos para este fin y estarán sujetos a revisión por parte del personal del Bosque en cualquier momento.
+
+Artículo 85.  Está estrictamente prohibido el uso de cualquier tipo de pirotecnia, fría o caliente, en el interior del Bosque.
+
+Artículo 86.  El montaje del evento en áreas donde circula el público podrá hacerse parcial iniciando por los equipos con instalación más compleja como escenarios o equipos de sonido e iluminación.  Deberá dejarse el resto de la instalación para después de las 19:00 horas.
+
+Artículo 87.  El responsable del evento deberá contratar a su nombre y cuenta, personal de seguridad que esté en el lugar del evento desde una hora antes de su inicio y hasta que salga el último invitado para controlar que en ningún momento se separen del grupo o del espacio en donde se realiza la actividad así como cualquier otra eventualidad o incidente que llegare a presentarse.
+
+Artículo 88.  El responsable del evento tendrá que contratar a su cargo hostess para la recepción de los invitados y acompañarlos hasta el lugar del evento, por seguridad de los invitados.
+
+Artículo 89.  El responsable del evento tendrá que contratar a su nombre y cuenta personal de limpieza para atender el espacio, antes, durante y después del evento. Deberán retirar toda la basura orgánica e inorgánica generada por el evento.
+
+Artículo 90.  En caso de ser necesario, a juicio de la Dirección, el responsable del evento deberá contratar a su nombre y cuenta baños móviles para los asistentes al evento.
+
+Artículo 91.  El uso de equipos de audio estará limitado para micrófonos o música ambiental con un máximo de 75 decibeles en la fuente de sonido. Las presentaciones con músicos en vivo solo están permitidas a manera de música ambiental para el evento con el máximo de decibeles permitidos aquí señalados.
+
+Artículo 92.  Cualquier tipo de presentación artística que pretenda ser incluida durante el evento deberá ser autorizada antes de la firma del contrato.
+
+Artículo 93.  La capacidad máxima de aforo de los espacios contratados no podrá superar los límites establecidos:
+Espacio	Capacidad máxima
+Salón Bonsái	50 personas
+Pérgolas	250 personas
+Galería	200 personas
+
+
+Artículo 94. Cualquier daño a las instalaciones ocasionadas como resultado del evento tendrá que ser reparado por el responsable del evento.
+
+Artículo 95.  El responsable del evento o contratante deberá realizar un depósito en garantía a la cuenta del Bosque para cubrir cualquier daño que se pudiera haber causado a las instalaciones o patrimonio del Bosque. La subdirección de Procuración de Fondos  determinará el monto de acuerdo a la naturaleza del evento. En caso de haber daños, desperfectos u otros incidentes derivados del evento, se tomará el depósito para su reparación, de lo contrario será devuelto al finalizar el evento. El Bosque tendrá en todo momento el derecho a exigir al contratante la reparación de cualquier daño cuyo monto rebase la cantidad depositada como garantía.
+
+Artículo 96.  El Bosque se reserva el derecho de admisión en todo momento durante todas las etapas de desarrollo del evento, si es puesto en riesgo la integridad o seguridad de las personas, o pudieran ser dañadas las instalaciones o patrimonio del Bosque.
+
+Artículo 97.  El responsable del evento o contratante deberá traer todos los implementos o herramientas necesarios para su montaje, desmontaje y desarrollo del evento.
+
+Artículo 98. Las oficinas, el personal, números de teléfonos y direcciones de correo electrónico o cualquier otro medio de comunicación del Bosque, no podrán ser utilizados para ofrecer ningún tipo de información a los invitados o medios de comunicación interesados en el evento.
+
+Artículo 99. El Bosque no se hace responsable por cualquier daño o robo parcial o total que pueda ocurrir en los vehículos de los asistentes o mobiliario que se utilicen para el evento, en todo momento deberán ser vigilados por el responsable del evento o contratante.
+
+Artículo 100.  El logotipo del Bosque no deberá ser utilizado en cualquier tipo de impreso o publicidad referente al evento, únicamente la dirección, mapa de llegada y el nombre del Bosque como referencia para ubicar a los invitados.
+
+Artículo 101.  El personal del Bosque tiene prohibido recibir cualquier tipo de propina en efectivo o en especie, así como participar de las degustaciones de alimentos y bebidas o servir de personar de apoyo de limpieza, seguridad o de cualquier índole en los eventos de particulares.
+
+Artículo 102.  Cualquier otra consideración relacionada con el uso de los espacios para la realización de un evento no contemplada en este documento será analizada de forma individual por la Subdirección de Procuración de Fondos (si no está conformada, recaerá en la Dirección del Bosque) con la autorización de  la Dirección General, en su momento o del Consejo según sea el caso.
+
+CAPITULO VII.
+DE LA PRESTACIÓN DE SERVICIOS EXTERNOS
+
+Artículo 103.  Toda persona que desee prestar servicios externos dentro del Bosque, tales como cursos, clases o talleres de tipo educativo, cultural, deportivo o artístico, deberá presentar por escrito la solicitud especificando las actividades, días, horarios, cuota que pretenden cobrar a los participantes, capacidad máxima de atención y el lugar en el que pretenden impartir el curso, clase o taller. La autorización para la realización de las actividades aquí descritas es facultad exclusiva de la Dirección, misma que deberá emitir la respectiva autorización por escrito a través de la firma y suscripción del contrato correspondiente con el Prestador.
+
+Artículo 104.  Todos los participantes de las actividades descritas en este Capítulo deberán respetar los reglamentos del Bosque.
+
+Artículo 105.  El contrato suscrito entre el Prestador y el Bosque para la regulación de la prestación de sus servicios a usuarios del Bosque tendrá vigencia de un año.
+
+Artículo 106.  Está prohibido para el Prestador ofrecer una actividad diferente a las autorizadas por el Bosque en su contrato o autorización, así como  hacer uso de un espacio diferente o en diversos horarios y días al que le fue asignado.
+
+Artículo 107.  La autorización o permiso emitido en favor del Prestador es personal e intransferible, por lo que queda estrictamente prohibido transferirlo total o temporalmente a un tercero bajo cualquier esquema. En caso de ausencia del Prestador a la impartición de alguna clase o taller, deberá notificarlo a la Dirección y en su caso solicitar autorización previa para enviar a su suplente.
+
+Artículo 108. Todo Prestador deberá pagar al Bosque la cuota mensual de recuperación que se establezca de conformidad con la Ley de Ingresos vigente del Municipio de Guadalajara o con la  lista de conceptos de cobro autorizada por el Consejo Directivo. El pago deberá realizarse dentro de los primeros 10 días de cada mes, haciéndose acreedor a una penalización de 5% por cada 10 días de retraso en el pago. Si en un plazo máximo de 30 días hábiles no cumple con el pago total del adeudo será motivo de la cancelación inmediata del permiso o autorización del Prestador.
+
+Artículo 109.  Las Actividades de Educación Ambiental únicamente podrán ser impartidas por el Bosque o autoridades del Ayuntamiento; cualquier actividad relacionada con este tema tendrá que someterse previamente a consideración de la Dirección para su autorización.
+
+Artículo 110.  El Bosque se deslinda de cualquier accidente sufrido a los participantes que pudiera ocurrir durante el desarrollo de las actividades del Prestador.
+
+Artículo 111.   Cualquier otra consideración relacionada con la prestación de servicios no contemplada en este documento será analizada y resuelta por la Dirección.
+
+CAPITULO VIII
+DE LOS PATROCINIOS, PRESENCIA DE MARCA Y DONATIVOS
+
+De los Patrocinios
+Artículo 112.  El Bosque podrá contar con patrocinadores, los cuales estarán sujetos a los siguientes lineamientos para la publicidad de su marca:
+
+I.	La imagen de cada patrocinador por ubicación tendrá una dimensión de 5 centímetros por su proporción de largo;
+II.	El patrocinador no tendrá competencia directa o del mismo ramo en una misma zona;
+III.	El patrocinador tendrá la oportunidad de seleccionar la ubicación de su presencia de marca, con base a la disponibilidad y antigüedad de su solicitud;
+IV.	Las degustaciones y activaciones del producto del Patrocinador, deberán hacerse exclusivamente en el área de puertas principales y a los visitantes que están saliendo o que permanecen en la entrada;
+V.	En ningún caso en las degustaciones y activaciones podrán utilizar música o amplificadores de sonido;
+VI.	Los logotipos en playeras deben ser colocados en la manga o en la parte trasera debajo del cuello, la dimensión máxima es de 5X10 centímetros, y solo podrán utilizarse en proyectos del Bosque. El logotipo del patrocinador debe estar impreso siempre en una sola tinta;
+VII.	No podrán utilizarse logos de patrocinadores en uniformes del Bosque;
+VIII.	Queda prohibido colocar las marcas de los patrocinadores en cédulas y señalética con contenido educativo;
+IX.	No está permitido instalar imágenes de patrocinadores grabadas, pintadas o incrustadas directamente en la señalética. Se instalarán en mobiliario adaptable para montar o desmontar las placas de manera temporal;
+X.	El costo de las placas con la imagen de los patrocinadores correrá por cuenta del patrocinador y no se considerará como aportación al Bosque los Colomos; y,
+XI.	Los demás que determine la Dirección o el Consejo Directivo.
+
+De los Donativos
+
+Artículo 113.   Para la aplicación del programa de donantes del Bosque, podrá participar toda persona física o moral  con aportaciones de todos tipos; recursos económicos, en especie y servicios. Contará con seis categorías de acuerdo con la aportación y tendrán beneficios distintos determinados por la Subdirección de Procuración de Fondos en conjunto con la Dirección.
+
+Artículo 114.  El Bosque podrá recibir donativos en: pesos mexicanos, en especie y de servicio. La cantidad máxima a recibir en efectivo es de $2,000.00 (dos mil pesos M.N. 00/100). Donativos vía depósito, transferencia bancaria o cheque, no hay límite.
+
+Artículo 115.  En caso de donativos de flora debe cumplir con las siguientes características:
+
+I.	Que la especie se encuentre dentro del listado del Bosque.
+II.	Las especies y cantidades serán de acuerdo al plan de manejo forestal y de acuerdo a las necesidades del Bosque.
+III.	La planta recién germinada se recibirá de acuerdo con la capacidad de atención y necesidades del vivero para la producción del Bosque.
+IV.	Los ejemplares para plantar dentro del mismo año deben ser de calidad de 1.50 a 1.80 metros de altura con un diámetro de fuste de una a dos pulgadas y sana.
+V.	La semilla tendrá que ser de calidad y de planta madre que sean árboles libres de plagas y enfermedades, árboles con un alto vigor, de sitios aledaños al Bosque.
+VI.	Para proyectos específicos y temporales del Bosque será, según necesidades y especificaciones.
+
+Artículo 116.  En el caso de donativos de insecticidas y fertilizantes, deben ser de preferencia de origen orgánico, complementando con productos de lenta liberación.
+
+Artículo 117. En el caso de donativos de herramienta para mantenimiento del Bosque; deberá ser de preferencia nueva, si es usada deberá encontrarse en buen estado. Se recibirá para necesidades específicas del Bosque, por ejemplo; tijeras, palas, desarmadores, escobas metálicas, machete, entre otras.
+
+Artículo 118.  Para la donación de equipo para mantenimiento del Bosque, preferentemente deberá ser nuevo y se acompañará con la póliza de garantía. Si fuera aportación de pago a proveedores se proporcionará copia de la factura. Preferentemente se buscarán modelos de línea, de uso rudo y que tengan piezas para futuras reparaciones.
+
+Artículo 119.   El Bosque podrá recibir vehículos en donación para uso en la operación de diversas áreas. Deberán ser preferentemente nuevos. En todo caso deberán contar con factura para demostrar su legitimidad.
+
+Artículo 120.  El Bosque podrá recibir consumibles en donación de acuerdo a las necesidades específicas de los productos, señalando de manera enunciativa más no limitativa los siguientes:
+
+I.	Pintura vinílica y esmalte (de alta calidad y duración, sin diluir, con el contenedor cerrado y fecha mínima de caducidad de seis meses, los colores deberán ser autorizados de conformidad a los lineamientos del Bosque)
+II.	Brochas, estopa, rodillos, thinner y barniz
+III.	Popote para escoba
+IV.	Bolsas para basura (de plástico resistente color negro de 95X150 cms. o 70X90 cms.)
+V.	Material educativo según las necesidades de talleres y libros.
+VI.	Bienes perecederos para eventos y proyectos del Bosque.
+VII.	Mobiliario y equipo en general
+VIII.	Obras de arte:
+a)	Antes de la aceptación de cualquier obra de arte deberá ser evaluada y autorizada por la Dirección o el Consejo Directivo.
+b)	Las esculturas o instalaciones deberán ser de temas relacionados con la vocación del Bosque.
+c)	Las piezas preferentemente deberán aportar a la educación ambiental y hacer alusión a la biodiversidad o elementos del Bosque.
+d)	Se requerirá que se anexe un certificado de autenticidad, factura o documento que demuestre su propiedad y un avalúo en caso de ser necesario.
+e)	Deberán cumplir con las normas de seguridad, evitando que atenten con la integridad de los usuarios del Bosque como filos, picos, entre otros.
+IX.	Productos para ser destinados para su venta en la tienda del Bosque, siempre y cuando el donante esté de acuerdo. La venta se realizará a precios del mercado.
+X.	Servicios. Cualquier servicio otorgado para el mantenimiento y mejora del Bosque, el cual deberá cumplir con las especificaciones del programa de manejo y estar bajo la supervisión del departamento correspondiente del Bosque. Las aportaciones en servicio pueden ser: capacitaciones especializadas para mejorar el servicio, mejorar las habilidades laborales, de actualización y tareas específicas, presentación de eventos culturales, transporte, entre otros.
+
+En todos los casos se podrá hacer aportación del pago a proveedores.
+
+Artículo 121.  La subdirección de Procuración de Fondos es la única instancia autorizada para decidir la aceptación y canalización de los donativos recibidos, previa consulta a la Dirección.
+
+Artículo 122.  Corresponde a la Dirección y a la Subdirección de Procuración de Fondos la gestión de los donativos, de acuerdo con las necesidades específicas que planteen las direcciones de área del Bosque en la planeación estratégica y la programación anual.
+
+Artículo 123.  El personal adscrito a las diversas áreas del Bosque no podrá aceptar, recibir ni aplicar donativo alguno, sin la autorización previa de la subdirección de Procuración de Fondos.
+
+Artículo 124.  Los posibles donantes que se presenten en el Bosque, deberán ser canalizados a la subdirección de Procuración de Fondos para su atención correspondiente.
+
+Artículo 125.  Queda prohibido a personas, grupos o asociaciones ajenas al Bosque, la tramitación y obtención de donativos en los que se involucre el nombre del Bosque.
+
+Artículo 126. La subdirección de Procuración de Fondos en conjunto con la Dirección o el Consejo Directivo, definirán las políticas y lineamientos generales relacionados con donativos.
+
+Artículo 127.  Tratándose de donativos no contemplados dentro de las necesidades cotidianas del Bosque, la subdirección de Procuración de Fondos, previa autorización de la Dirección, estará facultado para determinar la aceptación o no y el destino de los mismos.
+
+Artículo 128.  Los donativos perecederos se canalizarán de manera inmediata al área que los solicitó y será responsable de su utilización previa a su fecha de caducidad.
+
+Artículo 129.  El departamento administrativo, a través del área de almacén, es el responsable de la recepción, inventario, registro, custodia, conservación, control y distribución de los donativos consumibles y perecederos aceptados.
+
+Artículo 130.  La jefatura de Ingresos del Bosque es la responsable de tramitar y salvaguardar los aspectos de carácter legal en cuanto a la aceptación, recepción y aplicación, en su caso, de los donativos.
+
+Artículo 131.  La jefatura de Ingresos es la responsable de elaborar convenios de donación, patrocinio, intercambio y alianzas, celebradas con el Bosque, bajo las indicaciones determinadas por la subdirección de Procuración de Fondos y aprobadas por la Dirección.
+
+Artículo 132.  Las áreas que tienen a su cargo proyectos a los que hubieren asignado donativos de cualquier tipo, serán las responsables de su aplicación correcta y oportuna, así como de entregar a la subdirección de Procuración de Fondos,  un informe de su utilización.
+
+Artículo 133.  La subdirección de Procuración de Fondos es el responsable de la supervisión y seguimiento de los procesos operativos y administrativos en materia de donativos de cualquier tipo, para coadyuvar a que estos se realicen dentro del marco normativo interno y externo, en forma eficaz, eficiente y transparente, con apego a lo acordado con el donante, a fin de informar al  mismo sobre su uso.
+
+Artículo 134.  Está prohibido recibir donativos y patrocinios con las siguientes características o bajo cualquiera de las siguientes circunstancias:
+I.	Que para el otorgamiento del mismo se condicione a la aceptación o suscripción contratos comerciales
+II.	Bienes muebles e inmuebles o en especie en mal estado.
+III.	De montos mayores a $10,000.00 (diez mil pesos 00/100 M.N.) de donantes anónimos en los que no exista una comprobación de la legitimidad o procedencia lícita del recurso.
+IV.	Restringidos a exclusividad por giro de la empresa. Salvo en el caso que sea dentro de un proyecto específico, se podrá invitar a un benefactor por rubro si así lo autoriza la Subdirección de Procuración de Fondos.
+V.	De semillas genéticamente modificadas
+VI.	De especies de flora exótica de ningún tipo
+VII.	Si están condicionados a recibir una contraprestación o que impliquen aspectos de gestoría, organización, promoción, venta, o actividades análogas por parte del Bosque y en beneficio del donante o patrocinador, salvo aquellos casos en que previa evaluación, así lo autorice la Subdirección de Procuración de Fondos.
+VIII.	De instituciones, empresas o asociaciones o particulares que su patrimonio sea resultado de productos o servicios que a fin de lograr sus objetivos o cumplir con su objeto social, dañen de manera directa al medio ambiente en cuestiones de: deforestación, contaminación del agua, y que atenten contra la biodiversidad, así como de la salud tales como bebidas alcohólicas y cigarros.
+IX.	De instituciones, empresas, asociaciones o particulares que su patrimonio sea resultado de productos o servicios que a fin de lograr sus objetivos o cumplir con su objeto social, dañen de manera indirecta al medio ambiente en cuestiones de: deforestación, contaminación del agua, y que atenten contra la biodiversidad, así como de la salud tales como bebidas alcohólicas y cigarros, a menos de que la institución tenga una fundación, será preferible esta vía.
+X.	La aceptación de donativos en especie que impliquen costos que pudieran originarse para el Bosque serán evaluados por el área correspondiente, tomando en consideración los posibles gastos de transportación, mantenimiento, acondicionamiento, riesgo y responsabilidades para el Bosque, así como los beneficios correspondientes. Una vez hecho su dictamen se decidirá la aceptación o no del donativo.
+
+Artículo 135.  En el caso de los donativos no aceptados, la Subdirección de Procuración de Fondos (en caso de no estar conformada recaerá en la dirección del Bosque) deberá dejar en el expediente respectivo un documento en el que se especifiquen los motivos del rechazo.
+
+Artículo 136.  Cualquier donativo del cual resulte un conflicto de intereses, deberá ser evaluado por la Subdirección de Procuración de Fondos, antes de su aceptación.
+
+Recepción de Donativos y Pagos por Patrocinios
+
+Artículo 137.   El Bosque deberá elaborar y suscribir un convenio con los interesados para la recepción de donativos o patrocinios.
+
+Artículo 138.  En la recepción de donativos, sin importar la naturaleza y monto, el departamento administrativo deberá recabar el nombre, domicilio, Registro Federal de Contribuyentes, teléfono de donantes y cualquier otro dato necesario para  contar con los elementos suficientes para expedir el recibo de pago correspondiente con todos los requisitos a que obliguen las leyes fiscales aplicables.
+
+Artículo 139.  A los donantes se les expedirá un recibo de pago en cuya leyenda se especificará que se trata de un donativo; a los patrocinadores, un recibo de pago en cuya leyenda se especificará que se trata de un patrocinio.
+
+Artículo 140.  A los donativos y patrocinios en especie se les emitirá un recibo de pago en ceros y se especificará en la leyenda la aportación y el valor estimado de la misma.
+
+Artículo 141.  Todos los cheques que se reciban por concepto de donativo o patrocinio deberán expedirse a favor de “Bosque los Colomos”.
+
+Artículo 142.  Los donativos o patrocinios en efectivo o cheque serán canalizados al departamento administrativo para su depósito en la institución bancaria contratada por el Bosque, así como para la  elaboración del recibo de pago correspondiente en un lapso no mayor a dos días hábiles posterior a su recepción.
+
+Artículo 143.  Las aportaciones superiores a los $2,000.00 (dos mil pesos M.N. 00/100) deberán ser entregadas en cheque nominativo o a través de transferencia interbancaria.
+
+Artículo 144.  Todos los donativos aceptados de bienes perecederos deben ser asignados de forma inmediata al área correspondiente del Bosque, las cual deberá tomar las precauciones necesarias para usarlos antes de su fecha de caducidad y almacenarlos para su debida preservación. Aquellos bienes que no hayan sido utilizados en su totalidad para el fin que fueron solicitados, se dará aviso a la subdirección de Procuración de Fondos para su reasignación o devolución, según sea el caso.
+
+Artículo 145. Todos los donativos, en cualquiera de sus presentaciones, deberán utilizarse para lo que fueron solicitados y donados.
+
+Artículo 146.  Todos los donativos o patrocinios no restringidos serán utilizados y administrados por el Bosque como ingresos propios para  los gastos operativos.
+
+Artículo 147.  Los donativos de pauta publicitaria (tiempo aire en radio, televisión, anuncios, inserciones) deberán utilizarse para la promoción exclusiva de programas y proyectos del Bosque y no para proselitismo de ningún tipo ni promover a ningún particular.	 Estos serán administrados por la Subdirección de Comunicación del Bosque.
+
+Artículo 148.  El donante recibirá un informe detallado elaborado por subdirección de Procuración de Fondos sobre el uso de sus recursos una vez que haya concluido la actividad donde se ejercieron o cuando el donante lo requiera.
+
+Artículo 149.  Se elaborará un informe anual que se entregará a todos los donantes del Bosque los Colomos en el evento de entrega de reconocimientos que para tales efectos se lleve a cabo.
+
+Artículo 150.  La Subdirección de Procuración de Fondos, con el apoyo de la subdirección Administrativa, elaborará un informe bimestral para la Dirección y previo al Consejo Directivo, el cual incluirá los donativos y patrocinios recibidos, indicando el tipo de donativo, cantidad, situación en que se encuentra y el proyecto o programa al que se aplicará.
+
+Artículo 151.  Los donativos en efectivo serán administrados por la jefatura administrativa en un informe de ingresos y egresos, y este monto será incluido por separado en el presupuesto de ingresos del Bosque.
+
+Artículo 152.  Los donativos en especie y efectivo se registrarán con el valor comercial antes del impuesto de valor agregado, y se incluirán en el balance global de donativos y patrocinios.
+
+Artículo 153.  La Subdirección de Procuración de Fondos tendrá a su cargo el seguimiento y supervisión de los procesos relacionados con los donativos, a fin de contribuir a lograr una mejor eficacia y transparencia.
+
+Artículo 154.  Para formalizar los contratos de donación y patrocinio se deberá recabar al menos la siguiente información:
+
+	En el caso de persona física: identificación oficial vigente del donante o patrocinador, copia de la cédula del Registro Federal de Contribuyentes y comprobante de domicilio.
+	En el caso de persona jurídica: identificación oficial vigente del representante legal, copia del poder del representante legal, copia de la cédula del Registro Federal de Contribuyentes, Acta Constitutiva y comprobante de domicilio.
+
+CAPITULO IX
+DE LAS FALTAS
+
+Artículo 155.  Corresponde a la Dirección la aplicación de las sanciones  por violaciones a las disposiciones de este  reglamento, las cuales podrán consistir en:
+
+I.	Amonestación verbal o por escrito
+II.	Expulsión de las instalaciones del Bosque, y/o
+III.	Cancelación o rescisión de permisos o autorizaciones emitidas conforme a este Reglamento u otras disposiciones aplicables; y,
+IV.	Las demás que señalen las disposiciones legales aplicables.
+
+Independientemente de las sanciones aquí señaladas, las autoridades del Bosque tendrán en todo tiempo el derecho de remitir al infractor a las autoridades competentes.
+
+Artículo 156.   Se entiende por infracción la violación a cualquiera de las disposiciones  establecidas en el presente Reglamento, las cuales se enuncian a continuación;
+
+I.	Agresión física o verbal a usuarios, comerciantes, prestadores o al personal del Bosque;
+II.	Causar daño a las instalaciones o al patrimonio del Bosque, incluyendo marcar o pintar en las paredes de las instalaciones, equipamiento, bienes muebles y formaciones rocosas del Bosque;
+III.	Provocar incendios;
+IV.	Encender fogatas en lugares no permitidos;
+V.	Posesión y uso de explosivos, cohetes y cualquier tipo de sustancias químicas o inflamables que atenten contra la integridad física y ambiental;
+VI.	Introducir al Bosque armas, objetos o utensilios punzocortantes medianos o grandes;
+VII.	Ingresar en estado de ebriedad o bajo la influencia de estupefacientes o psicotrópicos;
+VIII.	Alterar o destruir por cualquier medio o acción, los sitios de alimentación, anidación, refugio o reproducción de las especies silvestres;
+IX.	Dañar, cortar y marcar árboles y plantas;
+X.	Interrumpir, desviar, rellenar o desecar flujos hidráulicos o cuerpos de agua del Bosque;
+XI.	No utilizar los baños para hacer sus necesidades;
+XII.	Realizar actos inmorales o que atenten con las buenas costumbres;
+XIII.	Causar daños o accidentes por error, negligencia o por no respetar el reglamento;
+XIV.	Realizar cualquier tipo de aprovechamiento o explotación de los recursos forestales con fines comerciales;
+XV.	Introducción de bebidas alcohólicas, estupefacientes y otras substancias prohibidas.
+
+
+Artículo 157.  Se sancionará con amonestación verbal o escrita a quienes cometan las siguientes infracciones:
+
+I.	Bloquear las vialidades o el paso de otros visitantes;
+II.	Arrojar, verter, abandonar o descargar basura y objetos de naturaleza orgánica o inorgánica en el Bosque fuera de los depósitos destinados para ello, así como contaminantes en el suelo o agua;
+III.	Introducirse en cuerpos de agua en lugares prohibidos;
+IV.	Emisión de sonido fuera de los decibeles máximos permitidos;
+V.	Introducir flora y fauna;
+VI.	Alimentar a los animales no permitidos o con alimentos no autorizados;
+VII.	Ingreso de motos, bicicletas, patines, triciclos u otros vehículos motorizados;
+VIII.	Fumar en el Bosque o en sus estacionamientos;
+IX.	Pernoctar y/o acampar fuera de los lugares destinados para tales efectos;
+X.	Arrojar piedras u objetos que molesten o dañen a la flora y fauna del Bosque;
+XI.	Extraer flora o fauna del Bosque;
+XII.	Escupir en el Bosque;
+XIII.	Usar drones y cualquier otro equipo de radiocontrol dentro del Bosque;
+XIV.	Realizar actos de proselitismo partidista o religiosos; e,
+XV.	Ingresar material pornográfico o sexualmente explícito a las instalaciones del  Bosque.
+
+Artículo 158.   Se impondrá la multa de acuerdo con la Ley de Ingresos vigente, a través  de la Dirección de Movilidad y Transporte del Ayuntamiento, a quienes cometan las siguientes infracciones:
+
+I.	Estacionarse en más de un lugar de estacionamiento.
+II.	No respetar los sentidos de circulación de los estacionamientos o de las vialidades interiores a quienes cuenten con autorización para ingresar el vehículo al Bosque.
+III.	Bloquear el tránsito o a otros vehículos estacionados
+IV.	Rebasar los límites de velocidad máximos permitidos
+V.	Estacionarse en lugares destinados para personas discapacitadas, personas de la tercera edad o mujeres embarazadas, sin encontrarse en esas condiciones.
+VI.	Las demás aplicables de conformidad al Reglamento de Estacionamientos en el Municipio de Guadalajara.
+
+Artículo 159.  De superar la cantidad de tarjetas para ingreso vehicular estipulados en el artículo 55, o dar un uso inadecuado a ellas o que los vehículos que las porten cometan alguna de las infracciones señaladas en el artículo anterior,  se levantará un acta para expediente del Bosque dando una amonestación por escrito, si reincide se le retirará la tarjeta al infractor sin posibilidad de renovarla o volver a solicitar una nueva.
+
+Artículo 160.  Por violaciones a las disposiciones previstas en el Capítulo V del presente reglamento  y dependiendo de la gravedad de las mismas, tratándose de los comerciantes, las sanciones consistirán en:
+
+I.	Amonestación verbal o por escrito; y/o
+II.	Rescisión del contrato, permiso o autorización correspondiente
+
+Artículo 161.  Son causas de rescisión del contrato de concesión o permiso para la realización de actividades comerciales en el Bosque, independientemente de las señaladas en el mismo:
+
+I.	Proporcionar datos falsos en la solicitud para realizar actos comerciales;
+II.	Cambiar de giro comercial sin la autorización previa de la Dirección;
+III.	Vender, traspasar o enajenar en cualquier forma la autorización para ejercer el comercio, sin aprobación de la Dirección;
+IV.	No ejercer la actividad comercial por más de treinta días continuos;
+V.	Alterar los productos en perjuicio de los consumidores;
+VI.	La mala atención al público comprobada;
+VII.	No contar con la licencia municipal del giro correspondiente;
+VIII.	El no pagar la renovación de la concesión o permiso y cuotas por los espacios objeto del contrato;
+IX.	No mantener aseada y en óptimas condiciones de limpieza el área concesionada;
+X.	Señalar como domicilio legal del comerciante el domicilio del Bosque;
+XI.	Alterar el orden público;
+XII.	No respetar los reglamentos del Bosque; y
+XIII.	No realizar la separación de residuos o utilizar unicel
+
+Artículo 162.  Por violaciones a las disposiciones previstas en el Capítulo VI y dependiendo de la gravedad de las mismas, las sanciones consistirán en:
+
+I.	Amonestación verbal o por escrito;
+II.	Impedir la entrada o expulsión de las instalaciones;
+III.	Cancelación del evento sin responsabilidad para el Bosque
+
+Artículo 163.  Las sanciones a que se refiere este capítulo, serán aplicadas tomando en consideración lo siguiente:
+
+I.	Gravedad de la falta;
+II.	Reincidencia, y
+III.	Las condiciones personales del infractor
+
+Artículo 164.   Para los efectos de este Reglamento se considera reincidente a aquella persona que habiendo cometido cualquier infracción a lo dispuesto por este ordenamiento, viole nuevamente alguna de las disposiciones contenidas en el mismo.
+
+Artículo 165.  En todo lo que no esté previsto en este Reglamento, se aplicarán los ordenamientos jurídicos que regulen los casos de que se trate.
+
+
+
+CAPITULO X
+PARTICIPACION CIUDADANA
+
+Artículo 166.  Para efectos de este Reglamento, la participación Ciudadana se realizará a través del
+Comité Técnico- Ciudadano con fundamento en el Capítulo V y los Artículos 19, 20,21,22,23 y 24 del
+Reglamento del Organismo Público Descentralizado de la Administración Pública Municipal de
+Guadalajara denominado “Bosque Los Colomos” y publicado en la Gaceta Municipal el día 15 de Enero
+de 2016.
+
+Artículo 167.   A falta del Comité Técnico-Ciudadano previsto en la fracción V del Reglamento del Organismo Público Descentralizado de la Administración Pública Municipal de Guadalajara denominado “Bosque Los Colomos” y publicado en la Gaceta Municipal el día 15 de Enero de 2016, dicha función podrá ser llevada a cabo por el Director General o quien determine el Consejo Directivo.
+
+TRANSITORIOS
+
+Artículo PRIMERO.- El presente Reglamento entrará en vigor el día siguiente de su publicación en la gaceta oficial del Ayuntamiento de Guadalajara.
+
+Artículo SEGUNDO.- Publíquese en la Gaceta Oficial del Ayuntamiento de Guadalajara.
+</string>
+    <string name="Reglamento_Scouts">Recuerda leer detenidamente el reglamento del parque Colomos.
+        •No se permitirán fogatas.
+        •No se permitirá que hagas uso de árboles.
+        •Recuerda que los tanques de gas LP no estarán permitidos.
+        •Usa el área de cocina del campamento.
+        •Lleva repelente contra mosquitos.
+        •Prepárate para días extremosos (calor y frio)
+        •La flora y fauna del parque colomos está protegida ayuda a que los demás la protejan.
+        •No des de comer a la fauna del lugar.
+        •Protege tu campamento de la fauna local.
+        •El parque colomos estará abierto al público procura tener tus pertenencias bien resguardadas.
+        •Adulto responsable, mantén siempre compacto tu grupo de participantes, el lugar es muy amplio y con zonas de riesgo.
+        •Las zonas de riesgo estarán acordonadas con cinta de prevención amarilla y de peligro en rojo.
+        •Ubica el centro de coordinación para cualquier situación de emergencia y seguridad.
+        •Ubica los 3 puntos de servicios de salud que estarán distribuidos por toda el área del evento.
+        •Los  equipos  de  seguridad estarán  distinguidos  por  un  chaleco  de  color azul, pídeles apoyo ellos estarán al pendiente de ti.
+        •Los equipos de primera respuesta (primeros auxilios) tendrán chalecos de color naranja.
+        •Nuestros servicios médicos tendrán chalecos de color blanco.
+        •Disfruta de tu experiencia estando siempre listo.</string>
+
 </resources>

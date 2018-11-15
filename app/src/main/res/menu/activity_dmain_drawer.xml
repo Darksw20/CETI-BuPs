@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/errorLogin"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_llave"
             android:title="@string/eeas_button_Login"
             />
     </group>

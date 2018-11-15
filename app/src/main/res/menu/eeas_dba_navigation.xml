@@ -3,12 +3,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/itDbaDash"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_escritorioremoto"
             android:title="@string/Dash"
             />
         <item
             android:id="@+id/itDbaQR"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_qr"
             android:title="@string/QR"
             />
     </group>
@@ -16,7 +16,7 @@
         <menu>
             <item
                 android:id="@+id/itDbaControl"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_gestionasistentes"
                 android:title="@string/CP"
                 />
             <item
@@ -35,22 +35,22 @@
         <menu>
             <item
                 android:id="@+id/itDbaMaps"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_mapicon"
                 android:title="@string/Maps"
                 />
             <item
                 android:id="@+id/itDbaContacts"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_contacto"
                 android:title="@string/Contacts"
                 />
             <item
                 android:id="@+id/itDbaGeo"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_location"
                 android:title="@string/Geo"
                 />
             <item
                 android:id="@+id/itDbaComunication"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_comunicado"
                 android:title="@string/Communication"
                 />
         </menu>
@@ -59,16 +59,16 @@
         <menu>
             <item
                 android:id="@+id/itDbaEmergency"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_emergencia"
                 android:title="@string/Emergency"
                 />
             <item
                 android:id="@+id/itDbaOptions"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_settings_black_24dp"
                 android:title="DBA" />
             <item
                 android:id="@+id/itDbaExit"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_login"
                 android:title="Cerrar Sesion" />
         </menu>
     </item>

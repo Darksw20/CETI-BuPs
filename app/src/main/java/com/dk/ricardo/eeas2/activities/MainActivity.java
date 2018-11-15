@@ -15,33 +15,33 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.DBase.ConexionSQLiteHelper;
 import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
-import com.dk.ricardo.eeas2.fragments.ComunicationFragment;
-import com.dk.ricardo.eeas2.fragments.ContactsFragment;
-import com.dk.ricardo.eeas2.fragments.ContestGestorFragment;
-import com.dk.ricardo.eeas2.fragments.ControlFragment;
-import com.dk.ricardo.eeas2.fragments.DashFragment;
-import com.dk.ricardo.eeas2.fragments.EmergencyNumbsFragment;
-import com.dk.ricardo.eeas2.fragments.GanttChartFragment;
-import com.dk.ricardo.eeas2.fragments.GeoLocationFragment;
-import com.dk.ricardo.eeas2.fragments.LocalizationFragment;
-import com.dk.ricardo.eeas2.fragments.MapUserLocationFragment;
-import com.dk.ricardo.eeas2.fragments.MedicFileFragment;
-import com.dk.ricardo.eeas2.fragments.OptionsFragment;
-import com.dk.ricardo.eeas2.fragments.QRImageFragment;
-import com.dk.ricardo.eeas2.fragments.SchedFragment;
-import com.dk.ricardo.eeas2.fragments.ToolboxFragment;
-import com.dk.ricardo.eeas2.fragments.WorkShGestorFragment;
+import com.dk.ricardo.eeas2.fragments.Comunication.ComunicationFragment;
+import com.dk.ricardo.eeas2.fragments.Contacts.ContactsFragment;
+import com.dk.ricardo.eeas2.fragments.ContestGestor.ContestGestorFragment;
+import com.dk.ricardo.eeas2.fragments.ControlPanel.ControlFragment;
+import com.dk.ricardo.eeas2.fragments.EmergencyNumbers.EmergencyNumbsFragment;
+import com.dk.ricardo.eeas2.fragments.Dashboard.DashFragment;
+import com.dk.ricardo.eeas2.fragments.SingleFragments.GanttChartFragment;
+import com.dk.ricardo.eeas2.fragments.GeoLocation.GeoLocationFragment;
+import com.dk.ricardo.eeas2.fragments.SingleFragments.LocalizationFragment;
+import com.dk.ricardo.eeas2.fragments.Maps.MapUserLocationFragment;
+import com.dk.ricardo.eeas2.fragments.MedicFiles.MedicFileFragment;
+import com.dk.ricardo.eeas2.fragments.Options.OptionsFragment;
+import com.dk.ricardo.eeas2.fragments.SingleFragments.QRImageFragment;
+import com.dk.ricardo.eeas2.fragments.Schedule.SchedFragment;
+import com.dk.ricardo.eeas2.fragments.Toolbox.ToolboxFragment;
+import com.dk.ricardo.eeas2.fragments.WorkShGestor.WorkShGestorFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 import com.dk.ricardo.eeas2.utilidades.Utilidades;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,NavigationHost
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        NavigationHost
 {
     TextView texrName, textCharge;
     ConexionSQLiteHelper con;
@@ -97,49 +97,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             case 1:
                 drawer = findViewById(R.id.drawer_layout_dba);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
-                db=con.getWritableDatabase();
-                ContentValues values=new ContentValues();
-                    values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
-                    values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
-                    values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
-                    values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
-                    values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
-                db.close();
-
                 break;
             case 2:
                 drawer = findViewById(R.id.drawer_layout_org);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 3:
                 drawer = findViewById(R.id.drawer_layout_sm);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 4:
                 drawer = findViewById(R.id.drawer_layout_tallerista);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 5:
                 drawer = findViewById(R.id.drawer_layout_juez);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 6:
                 drawer = findViewById(R.id.drawer_layout_participante);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 7:
                 drawer = findViewById(R.id.drawer_layout_sr);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             case 8:
                 drawer = findViewById(R.id.drawer_layout_staff);
-                con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
                 break;
             default:
                 drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
+        iniciarBD();
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         navigationView = findViewById(R.id.nav_view);
@@ -235,7 +219,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             texrName.setText("No hay internet disponible");
             textCharge.setText("Cerrar sesion");
-            Log.e("Error de internet",""+UserSingleton.getInstance().getNombre());
+            try
+            {
+                Log.e("Error de internet",""+UserSingleton.getInstance().getNombre());
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
         else
         {
@@ -292,9 +282,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Aqui se revisa que pedo con las opciones del
+        //Action bar
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -528,6 +518,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+
     public void delay()
     {
         //delay 500ms
@@ -539,4 +536,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }, 500);
     }
+
+    public void iniciarBD()
+    {
+        con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
+        db=con.getWritableDatabase();
+        ContentValues values=new ContentValues();
+            values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
+            values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
+            values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
+            values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
+            values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
+        db.close();
+    }
+
 }

@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.dk.ricardo.eeas2.R;
-import com.dk.ricardo.eeas2.fragments.DashFragment;
-import com.dk.ricardo.eeas2.fragments.LoginFragment;
+import com.dk.ricardo.eeas2.fragments.SingleFragments.LoginFragment;
+import com.dk.ricardo.eeas2.fragments.SingleFragments.RegisterFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 
 public class splashScreen extends AppCompatActivity implements NavigationHost
@@ -55,4 +55,11 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
         }
         transaction.commit();
     }
+
+    public void register(View view)
+    {
+        navigateTo(new RegisterFragment(),true);
+    }
+
+
 }
