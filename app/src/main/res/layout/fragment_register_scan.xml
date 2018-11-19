@@ -3,12 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.Toolbox.RegisterScanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:padding="16dp">
+         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp">
+            <SurfaceView
+                android:id="@+id/camera_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </SurfaceView>
+        </FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/userList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                </android.support.v7.widget.RecyclerView>
+                <Button
+                    android:id="@+id/ConfirmSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar"
+                    android:onClick="newUsers"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
 </FrameLayout>

@@ -1,8 +1,11 @@
 package com.dk.ricardo.eeas2.fragments.EmergencyNumbers;
 
-import android.content.Context;
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,15 +13,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.Adapters.RecyclerAdapter;
 import com.dk.ricardo.eeas2.R;
-import com.dk.ricardo.eeas2.utilidades.ItemData;
+import com.dk.ricardo.eeas2.utilidades.Items.ItemData;
 
-public class EmergencyNumbsFragment extends Fragment {
+import java.util.ArrayList;
+
+public class EmergencyNumbsFragment extends Fragment  implements RecyclerAdapter.ItemClickListener{
 
     RecyclerView recyclerView;
-
+    RecyclerAdapter recyclerAdapter;
+    ArrayList<ItemData> itemData=new ArrayList<>();
 
 
     @Override
@@ -28,25 +35,43 @@ public class EmergencyNumbsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emergency_numbs, container, false);
 
         recyclerView=view.findViewById(R.id.recyclerEmergency);
-        ItemData itemData[] ={
-                new ItemData("Numero 1",R.drawable.ic_afuera),
-                new ItemData("Numero 2",R.drawable.ic_afuera),
-                new ItemData("Numero 3",R.drawable.ic_afuera),
-                new ItemData("Numero 4",R.drawable.ic_afuera),
-                new ItemData("Numero 5",R.drawable.ic_afuera),
-                new ItemData("Numero 6",R.drawable.ic_afuera),
-                new ItemData("Numero 7",R.drawable.ic_afuera),
-                new ItemData("Numero 8",R.drawable.ic_afuera)
-        };
+        itemData.add(new ItemData("Mi mama",R.drawable.ic_afuera));
+        itemData.add(new ItemData("El Benja",R.drawable.ic_afuera));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(itemData);
+        recyclerAdapter = new RecyclerAdapter(getContext(),itemData);
+
+        recyclerAdapter.setClickListener(this);
 
         recyclerView.setAdapter(recyclerAdapter);
 
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         return view;
+    }
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "You clicked " + recyclerAdapter.getItem(position).getTitle().toString() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        switch (position)
+        {
+            case 0:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:3338219511")));
+                break;
+            case 1:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:3323550062")));
+                break;
+        }
+
     }
 
 }

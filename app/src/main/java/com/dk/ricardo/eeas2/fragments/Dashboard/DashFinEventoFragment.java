@@ -47,19 +47,48 @@ public class DashFinEventoFragment extends Fragment {
         evaluacion=view.findViewById(R.id.evaluacionTalleres);
         gastos=view.findViewById(R.id.gastos);
 
-        List<PieEntry> entries = new ArrayList<>();
-
-        entries.add(new PieEntry(49.0f, "Dentro"));
-        entries.add(new PieEntry(51.0f, "Fuera"));
 
 
-        PieDataSet set = new PieDataSet(entries, "Personas");
-        PieData data = new PieData(set);
-        arrivals.setData(data);
+
+
+        //Declaraciones de los Arreglos de los datos
+
+        List<PieEntry> afAdChart = new ArrayList<>();//Personas  afuera vs adentro
+
+        //incidencias
+
+        List<BarEntry> entries2 = new ArrayList<>();//Escala de satisfaccion de los usuarios
+
+        //Gastos de materrial proyectado vs Final
+        List<Entry> valsComp1 = new ArrayList<Entry>();//Pensado en un inicio
+        List<Entry> valsComp2 = new ArrayList<Entry>();//Real
+
+        List<BarEntry> entries1 = new ArrayList<>();//Evaluacion de los talleres
+
+
+
+
+
+
+        //--------------------------------------------------------------
+
+
+
+        afAdChart.add(new PieEntry(49.0f, "Dentro"));
+        afAdChart.add(new PieEntry(51.0f, "Fuera"));
+
+
+        PieDataSet setAf = new PieDataSet(afAdChart, "Personas1");
+        PieDataSet setAd = new PieDataSet(afAdChart, "Personas2");
+        PieData dataAf = new PieData(setAf);
+        PieData dataAd = new PieData(setAd);
+
+        arrivals.setData(dataAd);
+        arrivals.setData(dataAf);
         arrivals.invalidate(); // refresh
         //----------------------------------------------------------------
 
-        List<BarEntry> entries2 = new ArrayList<>();
+
 
         entries2.add(new BarEntry(45.2f,12.1f));
         entries2.add(new BarEntry(51.0f, 13.4f));
@@ -70,7 +99,7 @@ public class DashFinEventoFragment extends Fragment {
         satisfaccion.setData(data2);
         satisfaccion.invalidate(); // refresh
         //-------------------------------------------------------------
-        List<BarEntry> entries1 = new ArrayList<>();
+
 
         entries1.add(new BarEntry(45.2f,12.1f));
         entries1.add(new BarEntry(51.0f, 13.4f));
@@ -82,8 +111,7 @@ public class DashFinEventoFragment extends Fragment {
         evaluacion.invalidate(); // refresh
         //-------------------------------------------------------------
 
-        List<Entry> valsComp1 = new ArrayList<Entry>();
-        List<Entry> valsComp2 = new ArrayList<Entry>();
+
 
         Entry c1e1 = new Entry(0f, 100000f); // 0 == quarter 1
         Entry c1e2 = new Entry(1f, 140000f); // 1 == quarter 2 ...

@@ -34,12 +34,12 @@ public class DashFragment extends Fragment {
 
 
         tabs=view.findViewById(R.id.Tablay);
-        adapter= new ViewPagerAdapter(getActivity().getSupportFragmentManager(),3);
+        adapter= new ViewPagerAdapter(getActivity().getSupportFragmentManager());
 
         pager.setAdapter(adapter);
 
         tabs.setupWithViewPager(pager);
-        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabs.setTabMode(TabLayout.MODE_FIXED);
 
         try
         {
@@ -49,7 +49,7 @@ public class DashFragment extends Fragment {
 
         }catch (Exception e)
         {
-            //Log.d(""+e);
+            e.printStackTrace();
         }
 
         return view;

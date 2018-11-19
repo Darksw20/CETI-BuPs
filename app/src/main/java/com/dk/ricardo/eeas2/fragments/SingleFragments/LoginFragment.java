@@ -2,6 +2,7 @@ package com.dk.ricardo.eeas2.fragments.SingleFragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -40,12 +41,13 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     private int tipo;
     String user, pass;
     SharedPreferences loggin;
+    TextInputLayout userTextInput;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         final TextInputLayout passwordTextInput = view.findViewById(R.id.passTextInput);
-        final TextInputLayout userTextInput = view.findViewById(R.id.userTextInput);
+        userTextInput = view.findViewById(R.id.userTextInput);
         final TextInputEditText passwordEditText = view.findViewById(R.id.passEditText);
         final TextInputEditText userEditText = view.findViewById(R.id.userEditText);
         MaterialButton loginButton = view.findViewById(R.id.loginButton);
@@ -201,7 +203,16 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                 //error de tipo de usuario
                 if(tipo==0)
                 {
-                    //userTextInput.setError(getString(R.string.eeas_error_user));
+                    //
+                    getActivity().runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            // Stuff that updates the UI
+                            userTextInput.setError(getString(R.string.eeas_error_user));
+                        }
+                    });
                     Toast.makeText(getContext(),"Usuario no existe",Toast.LENGTH_SHORT).show();
                 }else if(tipo==404)
                 {
@@ -221,6 +232,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
             Log.e("errorNose",""+a+" ee:"+tipo);
         }
     }
+
 
 
 }

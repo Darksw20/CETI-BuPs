@@ -15,5 +15,6 @@
     <color name="materialGreen">#00BFA5</color>
     <color name="pinkAccent">#FF4081</color>
     <color name="white">#FFF</color>
+    <color name="gray">#CCC</color>
     <color name="black">#000</color>
 </resources>

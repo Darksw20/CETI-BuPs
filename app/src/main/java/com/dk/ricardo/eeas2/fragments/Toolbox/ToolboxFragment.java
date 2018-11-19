@@ -35,11 +35,12 @@ public class ToolboxFragment extends Fragment {
         tabsTool.setupWithViewPager(pagerTool);
         tabsTool.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        tabsTool.getTabAt(0).setCustomView(itemView("WoCo"));
+        tabsTool.getTabAt(0).setCustomView(itemView("Registros"));
         tabsTool.getTabAt(1).setCustomView(itemView("Stock"));
-        tabsTool.getTabAt(2).setCustomView(itemView("Registros"));
-        tabsTool.getTabAt(3).setCustomView(itemView("Entradas/salidas"));
-        tabsTool.getTabAt(4).setCustomView(itemView("Notas"));
+        tabsTool.getTabAt(2).setCustomView(itemView("WoCo"));
+        tabsTool.getTabAt(3).setCustomView(itemView("Notas"));
+        tabsTool.getTabAt(4).setCustomView(itemView("Entradas/salidas"));
+
 
         return view;
     }

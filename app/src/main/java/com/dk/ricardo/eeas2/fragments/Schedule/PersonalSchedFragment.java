@@ -9,17 +9,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.Adapters.RecyclerAdapter;
 import com.dk.ricardo.eeas2.R;
-import com.dk.ricardo.eeas2.utilidades.ItemData;
+import com.dk.ricardo.eeas2.utilidades.Items.ItemData;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PersonalSchedFragment extends Fragment {
+public class PersonalSchedFragment extends Fragment  implements RecyclerAdapter.ItemClickListener{
 
     RecyclerView recyclerView;
+    RecyclerAdapter recyclerAdapter;
+    ArrayList<ItemData> itemData=new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,25 +33,22 @@ public class PersonalSchedFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_personal_sched, container, false);
 
         recyclerView=view.findViewById(R.id.recyclerPSched);
-        ItemData itemData[] ={
-                new ItemData("Noticia 1",R.drawable.ic_afuera),
-                new ItemData("Noticia 2",R.drawable.ic_afuera),
-                new ItemData("Noticia 3",R.drawable.ic_afuera),
-                new ItemData("Noticia 4",R.drawable.ic_afuera),
-                new ItemData("Noticia 5",R.drawable.ic_afuera),
-                new ItemData("Noticia 6",R.drawable.ic_afuera),
-                new ItemData("Noticia 7",R.drawable.ic_afuera),
-                new ItemData("Noticia 8",R.drawable.ic_afuera)
-        };
+        itemData.add(new ItemData("Juan Miguel CUM:JAL0202020202",R.drawable.ic_afuera));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(itemData);
+        recyclerAdapter = new RecyclerAdapter(getContext(),itemData);
+
+        recyclerAdapter.setClickListener(this);
 
         recyclerView.setAdapter(recyclerAdapter);
 
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         return view;
+    }
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "You clicked " + recyclerAdapter.getItem(position).getTitle().toString() + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 
 }

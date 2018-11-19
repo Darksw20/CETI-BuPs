@@ -33,9 +33,8 @@ import com.dk.ricardo.eeas2.fragments.Toolbox.WoCoFragment;
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     int a;
-    public ViewPagerAdapter(FragmentManager fm, int i) {
+    public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
-        a=i;
     }
 
     @Override

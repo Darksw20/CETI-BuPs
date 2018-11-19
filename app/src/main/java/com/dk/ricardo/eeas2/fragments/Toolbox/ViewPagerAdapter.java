@@ -40,12 +40,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position)
         {
-
-            case 0: return new WoCoFragment();
+            case 0: return new RegisterScanFragment();
             case 1: return new StockFragment();
-            case 2: return new RegisterScanFragment();
-            case 3: return new SelectorInOutFragment();
-            case 4: return new NotesFragment();
+            case 2: return new WoCoFragment();
+            case 3: return new NotesFragment();
+            case 4: return new SelectorInOutFragment();
 
             default: return null;
         }

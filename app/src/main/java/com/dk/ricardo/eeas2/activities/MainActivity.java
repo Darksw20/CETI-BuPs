@@ -1,10 +1,13 @@
 package com.dk.ricardo.eeas2.activities;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +33,7 @@ import com.dk.ricardo.eeas2.fragments.EmergencyNumbers.EmergencyNumbsFragment;
 import com.dk.ricardo.eeas2.fragments.Dashboard.DashFragment;
 import com.dk.ricardo.eeas2.fragments.SingleFragments.GanttChartFragment;
 import com.dk.ricardo.eeas2.fragments.GeoLocation.GeoLocationFragment;
-import com.dk.ricardo.eeas2.fragments.SingleFragments.LocalizationFragment;
+import com.dk.ricardo.eeas2.fragments.GeoLocation.LocalizationFragment;
 import com.dk.ricardo.eeas2.fragments.Maps.MapUserLocationFragment;
 import com.dk.ricardo.eeas2.fragments.MedicFiles.MedicFileFragment;
 import com.dk.ricardo.eeas2.fragments.Options.OptionsFragment;
@@ -41,8 +45,7 @@ import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 import com.dk.ricardo.eeas2.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        NavigationHost
-{
+        NavigationHost {
     TextView texrName, textCharge;
     ConexionSQLiteHelper con;
     SQLiteDatabase db;
@@ -51,15 +54,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
 
+    private static final String[] CALL_PERMISSIONS = {Manifest.permission.CALL_PHONE};
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TODO: REVISAR QUE HAYA INTERNET CUANDO SE USE EL SINGLETON
         UserSingleton.getInstance().cargarWebService(this);
         delay();
-        switch (UserSingleton.getInstance().getTipoUser())
-        {
+        switch (UserSingleton.getInstance().getTipoUser()) {
             case 1:
                 setContentView(R.layout.activity_main_dba);
                 break;
@@ -88,13 +91,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setContentView(R.layout.activity_main_off);
                 break;
         }
-        android.support.v7.widget.Toolbar toolbar =  findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //TODO: Agregar funciones de la base de datos(osea que jale)
         //Este switch es para crear la base de datos
-        switch (UserSingleton.getInstance().getTipoUser())
-        {
+        switch (UserSingleton.getInstance().getTipoUser()) {
             case 1:
                 drawer = findViewById(R.id.drawer_layout_dba);
                 break;
@@ -132,13 +134,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         /*
-        * Este if sirve para poder mantener los datos aun cuando se cambie la vista de lugar
-        *En realidad te manda al fragment de inicio
-        * */
-        if (savedInstanceState == null)
-        {
-            switch (UserSingleton.getInstance().getTipoUser())
-            {
+         * Este if sirve para poder mantener los datos aun cuando se cambie la vista de lugar
+         *En realidad te manda al fragment de inicio
+         * */
+        if (savedInstanceState == null) {
+            switch (UserSingleton.getInstance().getTipoUser()) {
                 case 1:
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -198,9 +198,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
     }
+
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         //TODO: Agregar que se revise el estado de internet
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -213,68 +213,66 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dmain, menu);
-        texrName= findViewById(R.id.textName);
-        textCharge= findViewById(R.id.textCharge);
-        if(UserSingleton.getInstance().getNombre()==null)
-        {
+        texrName = findViewById(R.id.textName);
+        textCharge = findViewById(R.id.textCharge);
+        if (UserSingleton.getInstance().getNombre() == null) {
             texrName.setText("No hay internet disponible");
             textCharge.setText("Cerrar sesion");
-            try
-            {
-                Log.e("Error de internet",""+UserSingleton.getInstance().getNombre());
-            }catch (Exception e)
-            {
+            try {
+                Log.e("Error de internet", "" + UserSingleton.getInstance().getNombre());
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else
-        {
-            switch (UserSingleton.getInstance().getTipoUser())
-            {
-                case 1:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User1);
-                    break;
-                case 2:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User2);
-                    break;
-                case 3:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User3);
-                    break;
-                case 4:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User4);
-                    break;
-                case 5:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User5);
-                    break;
-                case 6:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User6);
-                    break;
-                case 7:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User7);
-                    break;
-                case 8:
-                    string=""+getString(R.string.Bienvenida)+" "+(UserSingleton.getInstance().getNombre());
-                    texrName.setText(string);
-                    textCharge.setText(R.string.User8);
-                    break;
-                default:
-                    texrName.setText("Cerrar sesion");
-                    textCharge.setText("Por Favor");
-                    break;
+        } else {
+            try {
+                switch (UserSingleton.getInstance().getTipoUser()) {
+                    case 1:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User1);
+                        break;
+                    case 2:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User2);
+                        break;
+                    case 3:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User3);
+                        break;
+                    case 4:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User4);
+                        break;
+                    case 5:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User5);
+                        break;
+                    case 6:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User6);
+                        break;
+                    case 7:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User7);
+                        break;
+                    case 8:
+                        string = "" + getString(R.string.Bienvenida) + " " + (UserSingleton.getInstance().getNombre());
+                        texrName.setText(string);
+                        textCharge.setText(R.string.User8);
+                        break;
+                    default:
+                        texrName.setText("Cerrar sesion");
+                        textCharge.setText("Por Favor");
+                        break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         return true;
@@ -302,8 +300,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
         DrawerLayout drawer;
-        switch (UserSingleton.getInstance().getTipoUser())
-        {
+        switch (UserSingleton.getInstance().getTipoUser()) {
             case 1:
                 drawer = findViewById(R.id.drawer_layout_dba);
                 break;
@@ -332,8 +329,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer = findViewById(R.id.drawer_layout_off);
                 break;
         }
-        switch (id)
-        {
+        switch (id) {
             case R.id.itDbaDash:
                 //case R.id.itOrgDash:
                 //case R.id.itSMDash:
@@ -343,8 +339,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRDash:
             case R.id.itStaffDash:
 
-                Toast.makeText(getApplicationContext(),"Dashboard",Toast.LENGTH_LONG).show();
-                navigateTo(new DashFragment(),true);
+                Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_LONG).show();
+                navigateTo(new DashFragment(), true);
                 break;
             case R.id.itDbaContacts:
             case R.id.itOrgContacts:
@@ -355,8 +351,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRContacts:
             case R.id.itStaffContacts:
 
-                Toast.makeText(getApplicationContext(),"Contactos",Toast.LENGTH_LONG).show();
-                navigateTo(new ContactsFragment(),true);
+                Toast.makeText(getApplicationContext(), "Contactos", Toast.LENGTH_LONG).show();
+                navigateTo(new ContactsFragment(), true);
                 break;
             case R.id.itDbaControl:
             case R.id.itOrgControl:
@@ -367,8 +363,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //case R.id.itSRExit:
             case R.id.itStaffControl:
 
-                Toast.makeText(getApplicationContext(),"Panel de Control",Toast.LENGTH_LONG).show();
-                navigateTo(new ControlFragment(),true);
+                Toast.makeText(getApplicationContext(), "Panel de Control", Toast.LENGTH_LONG).show();
+                navigateTo(new ControlFragment(), true);
                 break;
             case R.id.itDbaQR:
             case R.id.itOrgQR:
@@ -379,8 +375,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRQR:
             case R.id.itStaffQR:
 
-                Toast.makeText(getApplicationContext(),"Codigo QR",Toast.LENGTH_LONG).show();
-                navigateTo(new QRImageFragment(),true);
+                Toast.makeText(getApplicationContext(), "Codigo QR", Toast.LENGTH_LONG).show();
+                navigateTo(new QRImageFragment(), true);
                 break;
             case R.id.itDbaLocalization:
             case R.id.itOrgLocalization:
@@ -391,8 +387,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //case R.id.itSRLocalization:
             case R.id.itStaffLocalization:
 
-                Toast.makeText(getApplicationContext(),"Localizacion",Toast.LENGTH_LONG).show();
-                navigateTo(new LocalizationFragment(),true);
+                Toast.makeText(getApplicationContext(), "Localizacion", Toast.LENGTH_LONG).show();
+                navigateTo(new LocalizationFragment(), true);
                 break;
             case R.id.itDbaMaps:
             case R.id.itOrgMaps:
@@ -403,8 +399,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //case R.id.itSRMaps:
             case R.id.itStaffMaps:
 
-                Toast.makeText(getApplicationContext(),"Mapas",Toast.LENGTH_LONG).show();
-                navigateTo(new MapUserLocationFragment(),true);
+                Toast.makeText(getApplicationContext(), "Mapas", Toast.LENGTH_LONG).show();
+                navigateTo(new MapUserLocationFragment(), true);
                 break;
             case R.id.itDbaTool:
             case R.id.itOrgTool:
@@ -415,8 +411,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //case R.id.itSRExit:
             case R.id.itStaffTool:
 
-                Toast.makeText(getApplicationContext(),"Caja de herramientas",Toast.LENGTH_LONG).show();
-                navigateTo(new ToolboxFragment(),true);
+                Toast.makeText(getApplicationContext(), "Caja de herramientas", Toast.LENGTH_LONG).show();
+                navigateTo(new ToolboxFragment(), true);
                 break;
             case R.id.itDbaGeo:
             case R.id.itOrgGeo:
@@ -427,8 +423,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRGeo:
             case R.id.itStaffGeo:
 
-                Toast.makeText(getApplicationContext(),"Geolocalizacion",Toast.LENGTH_LONG).show();
-                navigateTo(new GeoLocationFragment(),true);
+                Toast.makeText(getApplicationContext(), "Geolocalizacion", Toast.LENGTH_LONG).show();
+                navigateTo(new GeoLocationFragment(), true);
                 break;
             case R.id.itDbaEmergency:
             case R.id.itOrgEmergency:
@@ -439,19 +435,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSREmergency:
             case R.id.itStaffEmergency:
 
-                Toast.makeText(getApplicationContext(),"Numeros de Emergencia",Toast.LENGTH_LONG).show();
-                navigateTo(new EmergencyNumbsFragment(),true);
+                Toast.makeText(getApplicationContext(), "Numeros de Emergencia", Toast.LENGTH_LONG).show();
+                navigateTo(new EmergencyNumbsFragment(), true);
                 break;
             case R.id.itDbaComunication:
             case R.id.itOrgComunication:
-            //case R.id.itSMComunication:
+                //case R.id.itSMComunication:
             case R.id.itTallerComunication:
             case R.id.itJuezComunication:
             case R.id.itPartComunication:
             case R.id.itSRComunication:
             case R.id.itStaffComunication:
-                Toast.makeText(getApplicationContext(),"Comunicacion",Toast.LENGTH_LONG).show();
-                navigateTo(new ComunicationFragment(),true);
+                Toast.makeText(getApplicationContext(), "Comunicacion", Toast.LENGTH_LONG).show();
+                navigateTo(new ComunicationFragment(), true);
                 break;
             case R.id.itDbaExit:
             case R.id.itOrgExit:
@@ -462,7 +458,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRExit:
             case R.id.itStaffExit:
             case R.id.errorLogin:
-                Toast.makeText(getApplicationContext(),"Cerrar sesion",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Cerrar sesion", Toast.LENGTH_LONG).show();
                 SharedPreferences loggin = getBaseContext().getSharedPreferences("LoginData", MODE_PRIVATE);
                 SharedPreferences.Editor editor = loggin.edit();
                 editor.clear();
@@ -481,23 +477,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.itOrgReport:
-                navigateTo(new OptionsFragment(),true);
+                navigateTo(new OptionsFragment(), true);
                 break;
             case R.id.itSMMedicalFiles:
             case R.id.itSRMedicalFiles:
-                navigateTo(new MedicFileFragment(),true);
+                navigateTo(new MedicFileFragment(), true);
                 break;
             case R.id.itPartSched:
             case R.id.itSRSched:
-                navigateTo(new SchedFragment(),true);
+                navigateTo(new SchedFragment(), true);
                 break;
         }
-
 
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     /**
      * Navigate to the given fragment.
      *
@@ -525,8 +521,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    public void delay()
-    {
+    public void delay() {
         //delay 500ms
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -537,17 +532,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }, 500);
     }
 
-    public void iniciarBD()
-    {
-        con=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
-        db=con.getWritableDatabase();
-        ContentValues values=new ContentValues();
-            values.put(Utilidades.CAMPO_CUM,UserSingleton.getInstance().getCum());
-            values.put(Utilidades.CAMPO_NOMBRE,UserSingleton.getInstance().getNombre());
-            values.put(Utilidades.CAMPO_APAT,UserSingleton.getInstance().getaPat());
-            values.put(Utilidades.CAMPO_AMAT,UserSingleton.getInstance().getaMat());
-            values.put(Utilidades.CAMPO_TIPO,UserSingleton.getInstance().getTipoUser());
+    public void iniciarBD() {
+        con = new ConexionSQLiteHelper(this, "bd_usuarios", null, 1);
+        db = con.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Utilidades.CAMPO_CUM, UserSingleton.getInstance().getCum());
+        values.put(Utilidades.CAMPO_NOMBRE, UserSingleton.getInstance().getNombre());
+        values.put(Utilidades.CAMPO_APAT, UserSingleton.getInstance().getaPat());
+        values.put(Utilidades.CAMPO_AMAT, UserSingleton.getInstance().getaMat());
+        values.put(Utilidades.CAMPO_TIPO, UserSingleton.getInstance().getTipoUser());
         db.close();
     }
 
+
+    public void verifyPermissions()
+    {
+        int permissionCallPhone = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE);
+
+        if(permissionCallPhone!=PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(MainActivity.this,CALL_PERMISSIONS,1);
+
+        }
+
+    }
+
+    public void newUsers(View view)
+    {
+        /*
+
+         */
+    }
 }

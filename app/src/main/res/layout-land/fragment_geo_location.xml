@@ -3,50 +3,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.GeoLocation.GeoLocationFragment">
 
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:elevation="4dp">
-
-            <android.support.design.widget.TabLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:elevation="4dp"
-                android:id="@+id/Tablay"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways">
-                <android.support.design.widget.TabItem
-                    android:id="@+id/tab_item_1"
-                    android:layout_width="wrap_content"
-                    android:elevation="4dp"
-                    android:layout_height="wrap_content"
-                    android:text="Registros"
-                    />
-                <android.support.design.widget.TabItem
-                    android:id="@+id/tab_item_2"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Evento"
-                    />
-                <android.support.design.widget.TabItem
-                    android:id="@+id/tab_item_3"
+                    android:text="Dia: "
+                    android:layout_marginStart="20dp"
+                    android:textSize="30sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="20-05-2018"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fin del Evento"
+                    android:text="Hora: "
+                    android:layout_marginStart="20dp"
+                    android:textSize="30sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="19:00:00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lugar de destino "
+                    android:layout_marginStart="20dp"
+                    android:textSize="30sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Terminar \n Seguimiento"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="50dp"
+                    android:text="Comenzar\n Seguimiento"
                     />
-            </android.support.design.widget.TabLayout>
 
+            </LinearLayout>
 
-        </android.support.design.widget.AppBarLayout>
+        </LinearLayout>
 
-
-    </android.support.design.widget.CoordinatorLayout>
+    </ScrollView>
 
 </FrameLayout>

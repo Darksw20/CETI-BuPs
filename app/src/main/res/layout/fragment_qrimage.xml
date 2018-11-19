@@ -5,10 +5,64 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SingleFragments.QRImageFragment">
 
-    <ImageView
-        android:id="@+id/imagenQr"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_qr"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:textAlignment="center">
+
+        <ImageView
+            android:id="@+id/imagenQr"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_qr"/>
+        <TextView
+            android:id="@+id/nomb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:text="nombre"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/apat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:text="APat"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:text=" "/>
+            <TextView
+                android:id="@+id/amat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:text="AMat"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:text="cum"/>
+        <TextView
+            android:id="@+id/provi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:text="Provincia"/>
+    </LinearLayout>
 
 </FrameLayout>

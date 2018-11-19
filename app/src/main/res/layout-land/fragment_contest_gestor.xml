@@ -5,41 +5,43 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ContestGestor.ContestGestorFragment">
 
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v4.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <EditText
+                android:layout_width="200dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:hint="CUM o Nombre"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Buscar"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <!-- Your scrolling content -->
-
-        </android.support.v4.widget.NestedScrollView>
-
-        <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <android.support.v7.widget.Toolbar
+            android:orientation="vertical">
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/toolbar"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"/>
+                android:layout_height="match_parent">
 
-            <android.support.design.widget.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/Tablay"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/contestGestorView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </android.support.design.widget.AppBarLayout>
+                </android.support.v7.widget.RecyclerView>
+            </ScrollView>
 
-    </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>
