@@ -118,9 +118,13 @@ public class Utilidades
     public static final String CAMPO_AMAT="aMat";
     public static final String CAMPO_QR="QR";
     public static final String CAMPO_TIPO="tipo";
+    public static final String CAMPO_HORA_LLEGADA="hLlegada";
+    public static final String CAMPO_DIA_LLEGADA="dLlegada";
+    public static final String CAMPO_LUGAR_LLEGADA="lLlegada";
 
     public static final String CREAR_TABLA_USUARIO="CREATE TABLE "+TABLA_USUARIO+" ("+CAMPO_CUM+
-            " TEXT PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRE+" TEXT, "+CAMPO_APAT+" TEXT, "+CAMPO_AMAT+" TEXT, "+
+            " TEXT PRIMARY KEY, "+CAMPO_NOMBRE+" TEXT, "+CAMPO_APAT+" TEXT, "+CAMPO_AMAT+" TEXT, "+
+            CAMPO_HORA_LLEGADA+" TEXT, "+CAMPO_DIA_LLEGADA+" TEXT, "+CAMPO_LUGAR_LLEGADA+" TEXT, "+
             CAMPO_QR+" TEXT, "+CAMPO_TIPO+" INTEGER)";
 
 
@@ -272,7 +276,7 @@ public class Utilidades
             " ("+CAMPO_ID_ENFERMEDADES+" INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_FECHA_ENFERMEDADES+" TEXT, "+
             CAMPO_E_FK_USUARIO+" TEXT, "+CAMPO_FK_ENFERMEDADES+" INTEGER, FOREIGN KEY ("+
             CAMPO_E_FK_USUARIO+") REFERENCES "+TABLA_USUARIO +"("+CAMPO_CUM+"), FOREIGN KEY ("+
-            CAMPO_FK_ENFERMEDADES+") REFERENCES "+TABLA_ENFERMEDADES+"("+CAMPO_PK_ENFERMEDADES+")";
+            CAMPO_FK_ENFERMEDADES+") REFERENCES "+TABLA_ENFERMEDADES+"("+CAMPO_PK_ENFERMEDADES+"))";
 
     //constantes campos tabla rel Mujer
     public static final String TABLA_REL_MUJER="relMujer";

@@ -6,8 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.fragments.ControlPanel.ActGestorFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,9 +19,7 @@ import com.dk.ricardo.eeas2.R;
 public class EvaluationFragment extends Fragment {
 
 
-    public EvaluationFragment() {
-        // Required empty public constructor
-    }
+    String url="https://goo.gl/forms/mWPargOX9jcaszL52";
 
 
     @Override
@@ -26,7 +28,22 @@ public class EvaluationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_evaluation, container, false);
 
+
+        WebView web = view.findViewById(R.id.webVisorEv);
+        web.setWebViewClient(new MyWebViewClient());
+        WebSettings settings = web.getSettings();
+        settings.setJavaScriptEnabled(true);
+        web.loadUrl(url);
+
         return view;
+    }
+    private class MyWebViewClient extends WebViewClient
+    {
+        public boolean shouldOverrideUrlLoading(WebView view,String url)
+        {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
 }

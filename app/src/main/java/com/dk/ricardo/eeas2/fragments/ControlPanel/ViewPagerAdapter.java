@@ -3,6 +3,7 @@ package com.dk.ricardo.eeas2.fragments.ControlPanel;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.dk.ricardo.eeas2.fragments.Comunication.CampLifeFragment;
 import com.dk.ricardo.eeas2.fragments.Comunication.EvaluationFragment;
@@ -29,7 +30,7 @@ import com.dk.ricardo.eeas2.fragments.Toolbox.SelectorInOutFragment;
 import com.dk.ricardo.eeas2.fragments.Toolbox.StockFragment;
 import com.dk.ricardo.eeas2.fragments.Toolbox.WoCoFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     int a;
     public ViewPagerAdapter(FragmentManager fm, int i) {

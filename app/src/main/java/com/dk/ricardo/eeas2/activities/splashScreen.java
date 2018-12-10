@@ -33,12 +33,9 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
                 // Do something after 5s = 5000ms
                 if (savedInstanceState == null)
                 {
-                    //Usar esta linea para cambiar de fragment en lo que arreglo el show
-                    //getSupportFragmentManager().beginTransaction().add(R.id.containerLogin, new LoginFragment()).commitAllowingStateLoss();
                     navigateTo(new LoginFragment(), false);
                     final int uiOptions2=View.SYSTEM_UI_FLAG_VISIBLE;
                     decorView.setSystemUiVisibility(uiOptions2);
-
                 }
             }
         }, 2000);
@@ -53,7 +50,7 @@ public class splashScreen extends AppCompatActivity implements NavigationHost
         if (addToBackstack) {
             transaction.addToBackStack(null);
         }
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
     }
 
     public void register(View view)

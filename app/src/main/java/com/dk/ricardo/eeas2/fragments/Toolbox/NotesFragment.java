@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.Adapters.RecyclerAdapter;
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.interfaces.NavigationHost;
 import com.dk.ricardo.eeas2.utilidades.Items.ItemData;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotesFragment extends Fragment implements RecyclerAdapter.ItemClickListener{
+public class NotesFragment extends Fragment implements RecyclerAdapter.ItemClickListener,NavigationHost {
 
 
     RecyclerView recyclerView;
@@ -35,7 +36,15 @@ public class NotesFragment extends Fragment implements RecyclerAdapter.ItemClick
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
 
         recyclerView=view.findViewById(R.id.recyclerNotes);
-        itemData.add(new ItemData("Juan Miguel CUM:JAL0202020202",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Nota",R.drawable.ic_afuera));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -54,6 +63,11 @@ public class NotesFragment extends Fragment implements RecyclerAdapter.ItemClick
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + recyclerAdapter.getItem(position).getTitle().toString() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        navigateTo(new NotesEditorFragment(),true);
+    }
+
+    @Override
+    public void navigateTo(Fragment fragment, boolean addToBackstack) {
+
     }
 }

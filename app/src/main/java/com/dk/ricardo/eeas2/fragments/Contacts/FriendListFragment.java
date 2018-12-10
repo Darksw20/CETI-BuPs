@@ -34,7 +34,7 @@ public class FriendListFragment extends Fragment  implements RecyclerAdapter.Ite
         View view = inflater.inflate(R.layout.fragment_friend_list, container, false);
 
         recyclerView=view.findViewById(R.id.recyclerFriend);
-        itemData.add(new ItemData("Juan Miguel CUM:JAL0202020202",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Facebook: Ricardo Navarro",R.drawable.ic_facebook));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

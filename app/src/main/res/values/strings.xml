@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">B-upS</string>
-    <string name="ip_webServices">http://192.168.0.104:1234/BupsWeb/webServices/</string>
-    <string name="ip_web">http://192.168.0.104:1234/BupsWeb/bupsWeb/Html/Base.html</string>
+    <string name="ip">http://192.168.0.102:1234/</string>
+    <string name="ip_webServices">http://scoutbups.com/webServices/</string>
+    <string name="ip_web">http://scoutbups.com/bupsWeb/Html/Base.html</string>
     <string name="API_KEY" templateMergeStrategy="preserve" translatable="false">AIzaSyCEEP77NR9rp45HaC6TA22H_mR8rFCfUCQ</string>
 
     <string name="Dash">Dashboard</string>
@@ -683,5 +684,6 @@ Artículo SEGUNDO.- Publíquese en la Gaceta Oficial del Ayuntamiento de Guadala
         •Los equipos de primera respuesta (primeros auxilios) tendrán chalecos de color naranja.
         •Nuestros servicios médicos tendrán chalecos de color blanco.
         •Disfruta de tu experiencia estando siempre listo.</string>
+    <string name="Recharge">Recargar</string>
 
 </resources>

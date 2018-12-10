@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,19 +18,31 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
+import android.widget.Switch;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
+import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectorInOutFragment extends Fragment {
+public class SelectorInOutFragment extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener {
 
 
     private CameraSource cameraSource;
@@ -37,6 +50,7 @@ public class SelectorInOutFragment extends Fragment {
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     private String token = "";
     private String tokenanterior = "";
+    Switch SwInOut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +59,7 @@ public class SelectorInOutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_selector_in_out, container, false);
 
         cameraView = view.findViewById(R.id.cameraInOut);
+        SwInOut=view.findViewById(R.id.switchInOut);
 
         initQR();
 
@@ -139,18 +154,8 @@ public class SelectorInOutFragment extends Fragment {
                         tokenanterior = token;
                         Log.i("token", token);
 
-                        if (URLUtil.isValidUrl(token)) {
-                            // si es una URL valida abre el navegador
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(token));
-                            startActivity(browserIntent);
-                        } else {
-                            // comparte en otras apps
-                            Intent shareIntent = new Intent();
-                            shareIntent.setAction(Intent.ACTION_SEND);
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, token);
-                            shareIntent.setType("text/plain");
-                            startActivity(shareIntent);
-                        }
+                        //Aqui se arma el huateque
+                        cargarWebServiceEntSal("setAcceso.php");
 
                         new Thread(new Runnable() {
                             public void run() {
@@ -174,15 +179,64 @@ public class SelectorInOutFragment extends Fragment {
         });
 
     }
-    @Override
-    public void onPause() {
-        super.onPause();
 
+    private void cargarWebServiceEntSal(String webService)
+    {
+        String ip= getString(R.string.ip_webServices), url=""+ip+webService;
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
+        {
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<>();
+                params.put("CUM",UserSingleton.getInstance().getCum());
+                params.put("Pass",UserSingleton.getInstance().getPass());
+                params.put("token",token);
+                params.put("EntSal",checkEntSal());
+                return params;
+            }
+        };
+        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+            }
+        }, 500);
+    }
+
+    private String checkEntSal() {
+        String val;
+
+        if(SwInOut.isChecked())
+        {
+            val="0";
+        }
+        else
+        {
+            val="1";
+        }
+        return val;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(),""+error,Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(getContext(),"Inserto Correctamente",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (cameraSource != null) {
+            try {
+                cameraSource.release();
+            } catch (NullPointerException ignored) {  }
+            cameraSource = null;
+        }
     }
 }

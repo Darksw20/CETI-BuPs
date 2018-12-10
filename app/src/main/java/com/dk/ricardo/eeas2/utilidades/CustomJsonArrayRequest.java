@@ -35,7 +35,7 @@ public class CustomJsonArrayRequest extends Request<JSONObject>
         return params;
     }
 
-    ;
+
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {

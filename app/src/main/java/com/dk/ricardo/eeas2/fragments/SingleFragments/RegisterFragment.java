@@ -13,7 +13,8 @@ import com.dk.ricardo.eeas2.R;
 
 public class RegisterFragment extends Fragment {
 
-    String url="http://192.168.0.104:1234/BupsWeb/BupsWeb/Html/registro.php";
+
+    String url="http://scoutBups.com/bupsWeb/Html/registro.php";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,8 +25,6 @@ public class RegisterFragment extends Fragment {
         WebSettings settings = web.getSettings();
         settings.setJavaScriptEnabled(true);
         web.loadUrl(url);
-
-
 
         return view;
     }

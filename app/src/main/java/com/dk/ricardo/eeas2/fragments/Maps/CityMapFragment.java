@@ -101,7 +101,7 @@ public class CityMapFragment extends Fragment implements OnMapReadyCallback,
         else {
             Log.d("onCreate","Google Play Services available.");
         }
-        SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.mapCamp);
         try
         {
             mapFragment.getMapAsync(this);

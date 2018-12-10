@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -23,23 +24,34 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.dk.ricardo.eeas2.Adapters.RecyclerAdapter;
+import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
+import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
 import com.dk.ricardo.eeas2.utilidades.Items.ItemData;
+import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterScanFragment extends Fragment implements RecyclerAdapter.ItemClickListener {
+public class RegisterScanFragment extends Fragment implements RecyclerAdapter.ItemClickListener ,Response.Listener<JSONObject>,Response.ErrorListener {
 
 
     RecyclerView userList;
@@ -51,6 +63,7 @@ public class RegisterScanFragment extends Fragment implements RecyclerAdapter.It
     private String tokenanterior = "";
     String[] equipo= new String[10];
     ArrayList<ItemData> itemData=new ArrayList<>();
+    Button confirmSend;
 
     int numIntEquipo;
 
@@ -63,6 +76,13 @@ public class RegisterScanFragment extends Fragment implements RecyclerAdapter.It
 
         cameraView = view.findViewById(R.id.camera_view);
         userList=view.findViewById(R.id.userList);
+        confirmSend=view.findViewById(R.id.ConfirmSend);
+        confirmSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarWebServiceNewFren("checkIn.php");
+            }
+        });
 
         initQR();
         userList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -72,6 +92,7 @@ public class RegisterScanFragment extends Fragment implements RecyclerAdapter.It
 
         return view;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -236,20 +257,62 @@ public class RegisterScanFragment extends Fragment implements RecyclerAdapter.It
 
     }
 
+
+
     @Override
     public void onPause() {
         super.onPause();
-//        cameraSource.stop();
-        int i=0;
-        while (equipo[i]!=null)
-        {
-            Log.e("CumGuardado","Cums guardados "+equipo[i]);
-            i++;
+        if (cameraSource != null) {
+            try {
+                cameraSource.release();
+            } catch (NullPointerException ignored) {  }
+            cameraSource = null;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + recyclerAdapter.getItem(position).getTitle().toString() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "You clicked " + recyclerAdapter.getItem(position).getTitle().toString() +
+                " on row number " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    private void cargarWebServiceNewFren(String webService)
+    {
+        String ip= getString(R.string.ip_webServices), url=""+ip+webService;
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
+        {
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<>();
+                params.put("CUM",UserSingleton.getInstance().getCum());
+                params.put("Pass",UserSingleton.getInstance().getPass());
+                int i=0;
+                while (equipo[i]!=null)
+                {
+                    Log.i("equipo"+i,""+equipo[i]);
+                    params.put("equipo"+i,equipo[i]);
+                    i++;
+                }
+
+                return params;
+            }
+        };
+        VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+            }
+        }, 500);
+    }
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(),""+error,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(getContext(),"Inserto Correctamente",Toast.LENGTH_SHORT).show();
     }
 }

@@ -37,6 +37,10 @@ public class EmergencyNumbsFragment extends Fragment  implements RecyclerAdapter
         recyclerView=view.findViewById(R.id.recyclerEmergency);
         itemData.add(new ItemData("Mi mama",R.drawable.ic_afuera));
         itemData.add(new ItemData("El Benja",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Policia",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Ambulancia",R.drawable.ic_afuera));
+        itemData.add(new ItemData("El Ejercito",R.drawable.ic_afuera));
+        itemData.add(new ItemData("Bomberos",R.drawable.ic_afuera));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -69,6 +73,27 @@ public class EmergencyNumbsFragment extends Fragment  implements RecyclerAdapter
                 break;
             case 1:
                 startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:3323550062")));
+                break;
+            case 2:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 3:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 4:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 5:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 6:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 7:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
+                break;
+            case 8:
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:911")));
                 break;
         }
 

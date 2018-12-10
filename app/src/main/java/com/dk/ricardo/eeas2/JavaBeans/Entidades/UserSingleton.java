@@ -1,6 +1,7 @@
 package com.dk.ricardo.eeas2.JavaBeans.Entidades;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 
 import com.android.volley.Request;
@@ -24,6 +25,7 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
 
     private static volatile UserSingleton ourInstance = null;
 
+
     private UserSingleton() {
 
     }
@@ -33,7 +35,6 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
         String webService="fillUserData.php";
         String ip= context.getString(R.string.ip_webServices);
         String url=""+ip+webService;
-
         CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
         {
             @Override
@@ -46,6 +47,7 @@ public class UserSingleton implements Response.Listener<JSONObject>,Response.Err
         };
         VolleySingletonAdapter.getInstanceVolley(context).addToRequestQueue(customjsonArrayRequest);
         delay(500);
+
     }
 
     public static UserSingleton getInstance()

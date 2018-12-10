@@ -35,7 +35,7 @@
                         android:orientation="vertical">
 
                         <com.github.mikephil.charting.charts.PieChart
-                            android:id="@+id/chartprueba"
+                            android:id="@+id/chartES"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
 
@@ -58,7 +58,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Registros en Talleres"
+                            android:text="Total de entradas"
                             android:textStyle="bold" />
 
                         <View
@@ -68,7 +68,7 @@
                             android:background="@color/lightGrayLine" />
 
                         <TextView
-                            android:id="@+id/regTaller"
+                            android:id="@+id/TEnt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -105,7 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Mas de un taller"
+                            android:text="Total de salidas"
                             android:textStyle="bold" />
 
                         <View
@@ -115,7 +115,7 @@
                             android:background="@color/lightGrayLine" />
 
                         <TextView
-                            android:id="@+id/masTaller"
+                            android:id="@+id/TSal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -143,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Mas de un taller"
+                            android:text="Horas de contenidos"
                             android:textStyle="bold" />
 
                         <View
@@ -153,14 +153,14 @@
                             android:background="@color/lightGrayLine" />
 
                         <TextView
-                            android:id="@+id/masTalle2r"
+                            android:id="@+id/HCont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:padding="5dp"
                             android:layout_marginTop="15dp"
                             android:textAlignment="center"
-                            android:textSize="50sp"
+                            android:textSize="35sp"
                             android:text="10000"/>
 
 

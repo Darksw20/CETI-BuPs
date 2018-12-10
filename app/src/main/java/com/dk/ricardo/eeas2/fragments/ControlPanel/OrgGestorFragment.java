@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.dk.ricardo.eeas2.Adapters.RecyclerAdapter;
@@ -25,6 +28,9 @@ public class OrgGestorFragment extends Fragment  implements RecyclerAdapter.Item
     RecyclerView orgGestor;
     RecyclerAdapter recyclerAdapter;
     ArrayList<ItemData> itemData=new ArrayList<>();
+
+    String url="http://scoutbups.com/bupsWeb/sideBarOrga.php";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,18 +38,24 @@ public class OrgGestorFragment extends Fragment  implements RecyclerAdapter.Item
         View view = inflater.inflate(R.layout.fragment_org_gestor, container, false);
 
 
-        orgGestor=view.findViewById(R.id.orgGestorView);
-        itemData.add(new ItemData("Juan Miguel CUM:JAL0202020202",R.drawable.ic_afuera));
 
-        orgGestor.setLayoutManager(new LinearLayoutManager(getActivity()));
+        WebView web = view.findViewById(R.id.webVisorOrgGest);
+        web.setWebViewClient(new MyWebViewClient());
+        WebSettings settings = web.getSettings();
+        settings.setJavaScriptEnabled(true);
+        web.loadUrl(url);
 
-        recyclerAdapter = new RecyclerAdapter(getContext(),itemData);
-
-        orgGestor.setAdapter(recyclerAdapter);
 
         return view;
     }
-
+    private class MyWebViewClient extends WebViewClient
+    {
+        public boolean shouldOverrideUrlLoading(WebView view,String url)
+        {
+            view.loadUrl(url);
+            return true;
+        }
+    }
 
     @Override
     public void onItemClick(View view, int position) {

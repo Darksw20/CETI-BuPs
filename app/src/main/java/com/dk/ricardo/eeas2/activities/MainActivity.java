@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -22,7 +23,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.dk.ricardo.eeas2.DBase.ConexionSQLiteHelper;
+import com.dk.ricardo.eeas2.JavaBeans.Entidades.User;
 import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
 import com.dk.ricardo.eeas2.R;
 import com.dk.ricardo.eeas2.fragments.Comunication.ComunicationFragment;
@@ -42,10 +47,17 @@ import com.dk.ricardo.eeas2.fragments.Schedule.SchedFragment;
 import com.dk.ricardo.eeas2.fragments.Toolbox.ToolboxFragment;
 import com.dk.ricardo.eeas2.fragments.WorkShGestor.WorkShGestorFragment;
 import com.dk.ricardo.eeas2.interfaces.NavigationHost;
+import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
 import com.dk.ricardo.eeas2.utilidades.Utilidades;
+import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        NavigationHost {
+        NavigationHost,Response.Listener<JSONObject>,Response.ErrorListener {
     TextView texrName, textCharge;
     ConexionSQLiteHelper con;
     SQLiteDatabase db;
@@ -123,76 +135,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             default:
                 drawer = findViewById(R.id.drawer_layout_off);
-                break;
+            break;
         }
         iniciarBD();
-        toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         navigationView = findViewById(R.id.nav_view);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
         /*
-         * Este if sirve para poder mantener los datos aun cuando se cambie la vista de lugar
          *En realidad te manda al fragment de inicio
          * */
         if (savedInstanceState == null) {
             switch (UserSingleton.getInstance().getTipoUser()) {
                 case 1:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new DashFragment())
-                            .commit();
-
+                    navigateTo(new DashFragment(),true);
                     break;
                 case 2:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new DashFragment())
-                            .commit();
+                    navigateTo(new DashFragment(),true);
                     break;
                 case 3:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new MedicFileFragment())
-                            .commit();
+                    navigateTo(new MedicFileFragment(),true);
                     break;
                 case 4:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new WorkShGestorFragment())
-                            .commit();
+                    navigateTo(new WorkShGestorFragment(),true);
                     break;
                 case 5:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new ContestGestorFragment())
-                            .commit();
+                    navigateTo(new ContestGestorFragment(),true);
                     break;
                 case 6:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new DashFragment())
-                            .commit();
+                    navigateTo(new DashFragment(),true);
                     break;
                 case 7:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new MedicFileFragment())
-                            .commit();
+                    navigateTo(new MedicFileFragment(),true);
                     break;
                 case 8:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new DashFragment())
-                            .commit();
+                    navigateTo(new DashFragment(),true);
                     break;
                 default:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .add(R.id.container, new GanttChartFragment())
-                            .commit();
+                    navigateTo(new GanttChartFragment(),true);
                     break;
             }
 
@@ -201,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        //TODO: Agregar que se revise el estado de internet
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -215,11 +196,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getMenuInflater().inflate(R.menu.dmain, menu);
         texrName = findViewById(R.id.textName);
         textCharge = findViewById(R.id.textCharge);
-        if (UserSingleton.getInstance().getNombre() == null) {
+        if (UserSingleton.getInstance().getNombre() == null)
+        {
+            try {
             texrName.setText("No hay internet disponible");
             textCharge.setText("Cerrar sesion");
-            try {
-                Log.e("Error de internet", "" + UserSingleton.getInstance().getNombre());
+
+                Log.i("Sin internet", "" + UserSingleton.getInstance().getNombre());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -280,8 +263,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Aqui se revisa que pedo con las opciones del
-        //Action bar
 
         int id = item.getItemId();
 
@@ -326,7 +307,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer = findViewById(R.id.drawer_layout_staff);
                 break;
             default:
-                drawer = findViewById(R.id.drawer_layout_off);
+                drawer=findViewById(R.id.drawer_layout_off);
                 break;
         }
         switch (id) {
@@ -340,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffDash:
 
                 Toast.makeText(getApplicationContext(), "Dashboard", Toast.LENGTH_LONG).show();
-                navigateTo(new DashFragment(), true);
+                navigateTo(new DashFragment(), false);
                 break;
             case R.id.itDbaContacts:
             case R.id.itOrgContacts:
@@ -352,7 +333,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffContacts:
 
                 Toast.makeText(getApplicationContext(), "Contactos", Toast.LENGTH_LONG).show();
-                navigateTo(new ContactsFragment(), true);
+                navigateTo(new ContactsFragment(), false);
                 break;
             case R.id.itDbaControl:
             case R.id.itOrgControl:
@@ -364,7 +345,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffControl:
 
                 Toast.makeText(getApplicationContext(), "Panel de Control", Toast.LENGTH_LONG).show();
-                navigateTo(new ControlFragment(), true);
+                navigateTo(new ControlFragment(), false);
                 break;
             case R.id.itDbaQR:
             case R.id.itOrgQR:
@@ -376,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffQR:
 
                 Toast.makeText(getApplicationContext(), "Codigo QR", Toast.LENGTH_LONG).show();
-                navigateTo(new QRImageFragment(), true);
+                navigateTo(new QRImageFragment(), false);
                 break;
             case R.id.itDbaLocalization:
             case R.id.itOrgLocalization:
@@ -388,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffLocalization:
 
                 Toast.makeText(getApplicationContext(), "Localizacion", Toast.LENGTH_LONG).show();
-                navigateTo(new LocalizationFragment(), true);
+                navigateTo(new LocalizationFragment(), false);
                 break;
             case R.id.itDbaMaps:
             case R.id.itOrgMaps:
@@ -400,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffMaps:
 
                 Toast.makeText(getApplicationContext(), "Mapas", Toast.LENGTH_LONG).show();
-                navigateTo(new MapUserLocationFragment(), true);
+                navigateTo(new MapUserLocationFragment(), false);
                 break;
             case R.id.itDbaTool:
             case R.id.itOrgTool:
@@ -412,7 +393,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffTool:
 
                 Toast.makeText(getApplicationContext(), "Caja de herramientas", Toast.LENGTH_LONG).show();
-                navigateTo(new ToolboxFragment(), true);
+                navigateTo(new ToolboxFragment(), false);
                 break;
             case R.id.itDbaGeo:
             case R.id.itOrgGeo:
@@ -424,7 +405,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffGeo:
 
                 Toast.makeText(getApplicationContext(), "Geolocalizacion", Toast.LENGTH_LONG).show();
-                navigateTo(new GeoLocationFragment(), true);
+                navigateTo(new GeoLocationFragment(), false);
                 break;
             case R.id.itDbaEmergency:
             case R.id.itOrgEmergency:
@@ -436,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itStaffEmergency:
 
                 Toast.makeText(getApplicationContext(), "Numeros de Emergencia", Toast.LENGTH_LONG).show();
-                navigateTo(new EmergencyNumbsFragment(), true);
+                navigateTo(new EmergencyNumbsFragment(), false);
                 break;
             case R.id.itDbaComunication:
             case R.id.itOrgComunication:
@@ -447,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.itSRComunication:
             case R.id.itStaffComunication:
                 Toast.makeText(getApplicationContext(), "Comunicacion", Toast.LENGTH_LONG).show();
-                navigateTo(new ComunicationFragment(), true);
+                navigateTo(new ComunicationFragment(), false);
                 break;
             case R.id.itDbaExit:
             case R.id.itOrgExit:
@@ -477,15 +458,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.itOrgReport:
-                navigateTo(new OptionsFragment(), true);
+                navigateTo(new OptionsFragment(), false);
                 break;
             case R.id.itSMMedicalFiles:
             case R.id.itSRMedicalFiles:
-                navigateTo(new MedicFileFragment(), true);
+                navigateTo(new MedicFileFragment(), false);
                 break;
             case R.id.itPartSched:
             case R.id.itSRSched:
-                navigateTo(new SchedFragment(), true);
+                navigateTo(new SchedFragment(), false);
                 break;
         }
 
@@ -532,35 +513,77 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }, 500);
     }
 
-    public void iniciarBD() {
+    public void iniciarBD()
+    {
+        String cum="";
         con = new ConexionSQLiteHelper(this, "bd_usuarios", null, 1);
         db = con.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Utilidades.CAMPO_CUM, UserSingleton.getInstance().getCum());
-        values.put(Utilidades.CAMPO_NOMBRE, UserSingleton.getInstance().getNombre());
-        values.put(Utilidades.CAMPO_APAT, UserSingleton.getInstance().getaPat());
-        values.put(Utilidades.CAMPO_AMAT, UserSingleton.getInstance().getaMat());
-        values.put(Utilidades.CAMPO_TIPO, UserSingleton.getInstance().getTipoUser());
+        String[] campos = new String[]{Utilidades.CAMPO_CUM};
+        String[] args = new String[]{UserSingleton.getInstance().getCum()};
+
+        Cursor d = db.query("usuario", campos, "cum=?", args, null,
+                null, null);
+
+        //Nos aseguramos de que existe al menos un registro
+        if (d.moveToFirst())
+        {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                cum = d.getString(0);
+                Log.i("dataBD",cum+":");
+            } while (d.moveToNext());
+        }
+        if(!(cum.equals(UserSingleton.getInstance().getCum())))
+        {
+            ContentValues values = new ContentValues();
+                values.put(Utilidades.CAMPO_CUM, UserSingleton.getInstance().getCum());
+                values.put(Utilidades.CAMPO_NOMBRE, UserSingleton.getInstance().getNombre());
+                values.put(Utilidades.CAMPO_APAT, UserSingleton.getInstance().getaPat());
+                values.put(Utilidades.CAMPO_AMAT, UserSingleton.getInstance().getaMat());
+                values.put(Utilidades.CAMPO_TIPO, UserSingleton.getInstance().getTipoUser());
+            Long idRes=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CUM,values);
+            Log.i("Reg usuario","El usuario ha sido creado con exito: "+idRes);
+        }
+        else
+        {
+            Log.i("Reg usuario","El usuario "+cum+" ya existe");
+        }
+
+
+        d.close();
         db.close();
     }
 
-
-    public void verifyPermissions()
+    private void cargarWebServiceNewFren(String webService)
     {
-        int permissionCallPhone = ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE);
-
-        if(permissionCallPhone!=PackageManager.PERMISSION_GRANTED)
+        String ip= getString(R.string.ip_webServices), url=""+ip+webService;
+        CustomJsonArrayRequest customjsonArrayRequest=new CustomJsonArrayRequest(Request.Method.POST,url, null, this,this)
         {
-            ActivityCompat.requestPermissions(MainActivity.this,CALL_PERMISSIONS,1);
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<>();
+                params.put("CUM",UserSingleton.getInstance().getCum());
+                params.put("Pass",UserSingleton.getInstance().getPass());
+                return params;
+            }
+        };
+        VolleySingletonAdapter.getInstanceVolley(getApplicationContext()).addToRequestQueue(customjsonArrayRequest);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+            }
+        }, 500);
+    }
 
-        }
+    @Override
+    public void onErrorResponse(VolleyError error) {
 
     }
 
-    public void newUsers(View view)
-    {
-        /*
+    @Override
+    public void onResponse(JSONObject response) {
 
-         */
     }
 }

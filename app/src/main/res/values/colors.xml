@@ -13,8 +13,9 @@
     <color name="deepPurple">#7C4DFF</color>
     <color name="materialYellow">#FFB300</color>
     <color name="materialGreen">#00BFA5</color>
-    <color name="pinkAccent">#FF4081</color>
+    <color name="pinkAccent">#ff4081</color>
     <color name="white">#FFF</color>
     <color name="gray">#CCC</color>
     <color name="black">#000</color>
+    <color name="green">#00c853</color>
 </resources>

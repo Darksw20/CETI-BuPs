@@ -39,8 +39,7 @@
                     android:id="@+id/ConfirmSend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Registrar"
-                    android:onClick="newUsers"/>
+                    android:text="Registrar"/>
             </LinearLayout>
 
         </ScrollView>

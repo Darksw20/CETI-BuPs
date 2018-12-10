@@ -1,10 +1,14 @@
 package com.dk.ricardo.eeas2.fragments.SingleFragments;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
@@ -23,11 +27,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.dk.ricardo.eeas2.utilidades.CustomJsonArrayRequest;
 import com.dk.ricardo.eeas2.JavaBeans.Entidades.UserSingleton;
+import com.dk.ricardo.eeas2.utilidades.ErrorAlarmTrigger;
 import com.dk.ricardo.eeas2.utilidades.VolleySingletonAdapter;
 import com.dk.ricardo.eeas2.R;
 import com.dk.ricardo.eeas2.activities.MainActivity;
 
 import org.json.JSONObject;
+
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,10 +45,11 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class LoginFragment extends Fragment implements Response.Listener<JSONObject>,Response.ErrorListener
 {
-    private int tipo;
+    private int tipo, err;
     String user, pass;
     SharedPreferences loggin;
     TextInputLayout userTextInput;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,9 +59,9 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         final TextInputEditText passwordEditText = view.findViewById(R.id.passEditText);
         final TextInputEditText userEditText = view.findViewById(R.id.userEditText);
         MaterialButton loginButton = view.findViewById(R.id.loginButton);
+        err=0;
 
 
-        //TODO: Probar shared preferences
         try {
             loggin = getContext().getSharedPreferences("LoginData", MODE_PRIVATE);
 
@@ -93,8 +101,9 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                     passwordTextInput.setError(null); // Clear the error
                     try
                     {
-                        cargarWebServiceAuth("loginValidation.php",userEditText.getText().toString(),passwordEditText.getText().toString());
-                    }catch (Exception e)
+                        cargarWebServiceAuth("loginValidation.php",userEditText.getText().
+                                toString(),passwordEditText.getText().toString());
+                    }catch (NullPointerException e)
                     {
                         e.printStackTrace();
                     }
@@ -113,11 +122,11 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         {
             @Override
             protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("CUM",user);
-                params.put("Pass",password);
-                return params;
-            }
+            Map<String,String> params = new HashMap<String, String>();
+            params.put("CUM",user);
+            params.put("Pass",password);
+            return params;
+        }
         };
         VolleySingletonAdapter.getInstanceVolley(getContext()).addToRequestQueue(customjsonArrayRequest);
         final Handler handler = new Handler();
@@ -143,6 +152,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
     private boolean isPasswordValid(@Nullable Editable text) {
         return !(text != null && text.length() >= 8);
     }
+
     @Override
     public void onErrorResponse(VolleyError error)
     {
@@ -155,7 +165,16 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
             //error de tipo de usuario
             if(tipo==0)
             {
-                //userTextInput.setError(getString(R.string.eeas_error_user));
+                getActivity().runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        // Stuff that updates the UI
+                        userTextInput.setError(getString(R.string.eeas_error_user));
+
+                    }
+                });
                 Toast.makeText(getContext(),"Usuario no existe",Toast.LENGTH_SHORT).show();
             }else if(tipo==404)
             {
@@ -177,7 +196,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         try
         {
             tipo=response.getInt("tipo");
-            if(tipo>=1&&tipo<=8)
+            if((tipo>=1&&tipo<=8)&&(err<3))
             {
                 SharedPreferences.Editor x;
                 x= loggin.edit();
@@ -201,7 +220,20 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
             else
             {
                 //error de tipo de usuario
-                if(tipo==0)
+                if(err>2)
+                {
+                    Toast.makeText(getContext(),"Maximo de intentos sobrepasado",Toast.LENGTH_LONG).show();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            err=0;
+                        }
+                    }, 10000);
+
+                }
+                else if(tipo==0)
                 {
                     //
                     getActivity().runOnUiThread(new Runnable() {
@@ -211,8 +243,10 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
 
                             // Stuff that updates the UI
                             userTextInput.setError(getString(R.string.eeas_error_user));
+
                         }
                     });
+                    err++;
                     Toast.makeText(getContext(),"Usuario no existe",Toast.LENGTH_SHORT).show();
                 }else if(tipo==404)
                 {
@@ -223,7 +257,7 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
                 }
                 else
                 {
-                    Toast.makeText(getContext(),"Error "+tipo,Toast.LENGTH_SHORT).show();
+                    Log.i("errorNose",""+tipo);
                 }
             }
 
@@ -233,6 +267,10 @@ public class LoginFragment extends Fragment implements Response.Listener<JSONObj
         }
     }
 
+    public void setError()
+    {
+        this.err = 0;
+    }
 
 
 }
